@@ -109,7 +109,7 @@
             $this->db->join('bidan','tb_periksa_ibu.id_bidan=bidan.id_bidan');
              $query = $this->db->get();
             return $query;
-			}else{
+			}else if($id=="bidan"){
 			$user = $this->session->userdata('id_user');
 			$where = array('tb_periksa_ibu.id_bidan' => $user);
 			$this->db->select('*');
@@ -119,10 +119,18 @@
 			$this->db->where('tb_periksa_ibu.id_bidan',$user);
              $query = $this->db->get();
             return $query;
+			}else{
+			$user = $this->session->userdata('id_user');
+			$this->db->select('*');
+            $this->db->from('user');
+            $this->db->join('ibu_hamil','ibu_hamil.id_ibu=user.id_user');
+            $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu');
+			$this->db->where('user.id_user',$user);
+             $query = $this->db->get();
+            return $query;
 			}			
 		}
 		
-
 
 		public function buat_kode()   {
 		  $this->db->select('RIGHT(ibu_hamil.kode_ibu,2) as kode', FALSE);

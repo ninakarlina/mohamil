@@ -137,74 +137,78 @@
               <!-- /.box-body -->
             </div>
               </div>
+
+               <?php } ?>
+
+              <?php foreach($catatan_kes_ibu as $b){ ?>
               <div class="tab-pane" id="kes_ibu">
                 <div class="box-body">
                 <div class="form-group">
                   <label for="hpht">HPHT</label>
-                  <input type="date" class="form-control" name="hpht" id="hpht" disabled value="<?php echo $bu->hpht; ?>" onchange="myFunction(this.value)">
+                  <input type="date" class="form-control" name="hpht" id="hpht" disabled value="<?php echo $b->hpht; ?>" onchange="myFunction(this.value)">
                 </div>
                 <div class="form-group">
                   <label for="htp">HTP</label>
-                   <input type="text" name="htp" id="demo" class="form-control" value="<?php echo $bu->htp; ?>" readonly=" ">
+                   <input type="text" name="htp" id="demo" class="form-control" value="<?php echo $b->htp; ?>" readonly=" ">
                 </div>
                 <div class="form-group">
                   <label for="lila">Lila</label>
-                  <input type="text" class="form-control" name="lila" id="lila" value="<?php echo $bu->lila; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="lila" id="lila" value="<?php echo $b->lila; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="tb">Tinggi Badan</label>
-                  <input type="text" class="form-control" name="tb" id="tb" value="<?php echo $bu->tb; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="tb" id="tb" value="<?php echo $b->tb; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">
                   <label for="kontrasepsi_seb_hamil">Kontrasepsi Sebelum Kehamilan</label>
-                  <input type="text" class="form-control" name="kontrasepsi_seb_hamil" id="kontrasepsi_seb_hamil" value="<?php echo $bu->kontrasepsi_seb_hamil; ?>" disabled required="" >
+                  <input type="text" class="form-control" name="kontrasepsi_seb_hamil" id="kontrasepsi_seb_hamil" value="<?php echo $b->kontrasepsi_seb_hamil; ?>" disabled required="" >
                 </div>
                 <div class="form-group">
                   <label for="riwayat_penyakit">Riwayat Penyakit</label>
-                  <input type="text" class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" value="<?php echo $bu->riwayat_penyakit; ?>"disabled required="">
+                  <input type="text" class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" value="<?php echo $b->riwayat_penyakit; ?>"disabled required="">
                 </div>
                 <div class="form-group">
                   <label for="riwayat_alergi">Riwayat Alergi</label>
-                  <input type="text" class="form-control" name="riwayat_alergi" id="riwayat_alergi" value="<?php echo $bu->riwayat_alergi; ?>" disabled required="">
+                  <input type="text" class="form-control" name="riwayat_alergi" id="riwayat_alergi" value="<?php echo $b->riwayat_alergi; ?>" disabled required="">
                 </div>
                  <div class="form-group">
                   <label for="jml_persalinan">Jumlah Persalinan</label>
-                  <input type="text" class="form-control" name="jml_persalinan" id="jml_persalinan" value="<?php echo $bu->jml_persalinan; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_persalinan" id="jml_persalinan" value="<?php echo $b->jml_persalinan; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jml_abortus">Jumlah Abortus</label>
-                  <input type="text" class="form-control" name="jml_abortus" id="jml_abortus" value="<?php echo $bu->jml_abortus; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_abortus" id="jml_abortus" value="<?php echo $b->jml_abortus; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">
                   <label for="jml_anak_hidup">Jumlah Anak Hidup</label>
-                  <input type="text" class="form-control" name="jml_anak_hidup" id="jml_anak_hidup" value="<?php echo $bu->jml_anak_hidup; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_anak_hidup" id="jml_anak_hidup" value="<?php echo $b->jml_anak_hidup; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jml_premature">Jumlah Anak Lahir Premature</label>
-                  <input type="text" class="form-control" name="jml_premature" id="jml_premature" value="<?php echo $bu->jml_premature; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_premature" id="jml_premature" value="<?php echo $b->jml_premature; ?>" disabled required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $bu->jarak_hamil_persalinan_terakhir; ?>" disabled required="">
+                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" disabled required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>
-                  <input type="text" class="form-control" name="status_imun_akhir" id="status_imun_akhir" value="<?php echo $bu->status_imun_akhir; ?>" disabled required="">
+                  <input type="text" class="form-control" name="status_imun_akhir" id="status_imun_akhir" value="<?php echo $b->status_imun_akhir; ?>" disabled required="">
                 </div>
                  <div class="form-group">
                   <label for="penolong_persalinan">Penolong Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="penolong_persalinan" id="penolong_persalinan" value="<?php echo $bu->penolong_persalinan; ?>" disabled required="">
+                  <input type="text" class="form-control" name="penolong_persalinan" id="penolong_persalinan" value="<?php echo $b->penolong_persalinan; ?>" disabled required="">
                 </div>
                  <div class="form-group">
                   <label for="cara_persalinan_akhir">Cara Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="cara_persalinan_akhir" id="cara_persalinan_akhir" value="<?php echo $bu->cara_persalinan_akhir; ?>" disabled required="">
+                  <input type="text" class="form-control" name="cara_persalinan_akhir" id="cara_persalinan_akhir" value="<?php echo $b->cara_persalinan_akhir; ?>" disabled required="">
                 </div>
                  <div class="box-footer">
               </div>
               <!-- /.box-body --> 
             </div>
           </div>
-          
+          <?php } ?>
               <!-- /.tab-pane -->
             </div>
             <!-- /.tab-content -->
@@ -212,7 +216,6 @@
 
   </section>
 </form>
-		  <?php } ?>
 <script type="text/javascript">
 function Angkasaja(evt) {
 var charCode = (evt.which) ? evt.which : event.keyCode

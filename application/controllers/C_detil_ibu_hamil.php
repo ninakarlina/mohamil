@@ -13,6 +13,8 @@ class C_detil_ibu_hamil extends CI_Controller{
 		$id = $this->session->userdata('id_user');
 		$data['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($user)->result();
 		$data['ibu_hamil'] = $this->M_Ibu->tampil_ibu_hamil($id)->result();
+		$data['ibu'] = $this->M_Ibu->edit_ibu($id);
+		$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($id);
 		$data['kode'] = $this->M_Ibu->buat_kode();
 
 		$this->load->view('ibu/template/header', $data);
