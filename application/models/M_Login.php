@@ -28,6 +28,11 @@ class M_Login extends CI_Model {
       else if ($pass == 0)
           return "pass";
       else
+        $this->db->select('*');
+        $this->db->or_where('username', $postData['username']);
+        $this->db->where('password', $postData['password']);
+        $this->db->from('user');
+        $query=$this->db->get();
           return $query->result();
       }
 
