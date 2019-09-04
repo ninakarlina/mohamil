@@ -123,7 +123,7 @@
 			$user = $this->session->userdata('id_user');
 			$this->db->select('*');
             $this->db->from('user');
-            $this->db->join('ibu_hamil','ibu_hamil.id_ibu=user.id_user');
+            $this->db->join('ibu_hamil','ibu_hamil.id_user=user.id_user');
             $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu');
 			$this->db->where('user.id_user',$user);
              $query = $this->db->get();

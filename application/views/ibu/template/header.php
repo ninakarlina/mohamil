@@ -144,9 +144,14 @@
           </a>
         </li>
 
-        <li class="treeview">
-          <a href="<?php echo site_url('C_Periksa/form_input');?>">
+         <li class="treeview">
+          <a href="<?php echo site_url('C_ibu/artikel');?>">
             <i class="fa fa-pencil-square-o"></i> <span>Artikel</span>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="<?php echo site_url('C_ibu/kia');?>">
+      <i class="fa fa-file"></i> <span>KIA</span>
           </a>
         </li>
 

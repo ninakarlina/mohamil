@@ -48,20 +48,56 @@ class C_Ibu extends CI_Controller{
 			$this->load->view('ibu/artikel',$data2);
 			$this->load->view('ibu/template/footer_login');
 	}
-	public function artikel($id){
+	public function artikel(){
+		$data = $this->session->userdata('level');
+		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
+	
+		$data = $this->session->userdata('level');
+		$this->db->select('*');    
+		$this->db->from('artikel');
+		$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
+		$hj=$this->db->get()->result();
+		$data2=array(
+			"x"=>$hj,
+		);
+		
+			$this->load->view('ibu/template/header',$id);
+			$this->load->view('ibu/artikel',$data2);
+			$this->load->view('ibu/template/footer');
+	}
+	public function kia(){
+		$data = $this->session->userdata('level');
+		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
+	
+		$data = $this->session->userdata('level');
+		$this->db->select('*');    
+		$this->db->from('artikel');
+		$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
+		$hj=$this->db->get()->result();
+		$data2=array(
+			"x"=>$hj,
+		);
+		
+			$this->load->view('ibu/template/header',$id);
+			$this->load->view('ibu/KIA',$data2);
+			$this->load->view('ibu/template/footer');
+	}
+	public function view($ide){
+		$data = $this->session->userdata('level');
+		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
 		$data = $this->session->userdata('level');
 		 $this->db->select('*');    
     $this->db->from('artikel');
 	$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
-	$this->db->where(array('id_artikel'=> $id));
+	$this->db->where(array('id_artikel'=> $ide));
     $hj=$this->db->get()->result();
 	$data2=array(
 			"x"=>$hj,
 		);
 		
-			$this->load->view('ibu/template/header_login');
-			$this->load->view('ibu/single',$data2);
-			$this->load->view('ibu/template/footer_login');
+			$this->load->view('ibu/template/header',$id);
+			$this->load->view('ibu/baca_artikel',$data2);
+			$this->load->view('ibu/template/footer');
 	}
 	
   public function add()

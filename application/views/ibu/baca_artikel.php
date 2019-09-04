@@ -12,7 +12,7 @@
         </div>
 
         <!-- Main content -->
-        <div class="content body">
+    <div class="content body">
 		<div class="row">
 		<?php $no=1; 
 				foreach($x as $row):
@@ -36,6 +36,7 @@
 		
     </div>
   </div>
+
 			<?php
 				endforeach;?>
         </div>
