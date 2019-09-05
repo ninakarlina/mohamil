@@ -90,7 +90,7 @@
                 <div class="box-footer" style="">
                   <form id="form_chat" method="post">
                     <div class="input-group">
-                      <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                      <input type="text" name="message" id="pesan" placeholder="Type Message ..." class="form-control">
                       <span class="input-group-btn">
                             <button id="submit" class="btn btn-primary btn-flat tombol-simpan">Send</button>
                           </span>
@@ -121,6 +121,7 @@ $(document).ready(function(){
         
       }
     });
+    document.getElementById('pesan').value = '';
     return false;
   });
 });
