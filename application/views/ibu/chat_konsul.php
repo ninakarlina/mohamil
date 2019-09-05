@@ -1,9 +1,10 @@
-
+<?php $id_bidan = $tb_periksa_ibu[0]->id_bidan; ?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
+
         Chat Konsultasi
       
       </h1>
@@ -64,16 +65,16 @@
                   <!-- Contacts are loaded here -->
                  <div class="direct-chat-contacts">
                     <ul class="contacts-list">
-                    <?php  foreach($x as $row2): ?>
+                    <?php foreach($list_bidan as $list): ?>
             <li>
-                        <a href="<?php echo base_url();?>C_user/percakapan/<?php echo $row2->id_user; ?>">
+                        <a href="<?php echo base_url();?>C_Ibu/percakapan/<?php echo $list->id_bidan; ?>">
                           <img class="contacts-list-img" src="<?php echo base_url();?>assets/dist/img/user2-128x128.jpg">
                           <div class="contacts-list-info">
                             <span class="contacts-list-name">
-                              <?php echo $row2->nama_ibu; ?>
-                              <small class="contacts-list-date pull-right"><?php echo $row2->tgl_lahir_ibu; ?></small>
+                              <?php echo $list->nama_bidan; ?>
+                              <small class="contacts-list-date pull-right"><?php echo $list->tgl_lahir_bidan; ?></small>
                             </span>
-                            <span class="contacts-list-msg"><?php echo $row2->no_tlp; ?></span>
+                            <span class="contacts-list-msg"><?php echo $list->tlp_bidan; ?></span>
                           </div><!-- /.contacts-list-info -->
                         </a>
                       </li><!-- End Contact Item -->
@@ -102,7 +103,7 @@
 $(document).ready(function() {
 $.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
 setInterval(function() {
-$('#results').load('<?php echo base_url('C_user/chat');?>');
+$('#results').load('<?php echo base_url('C_Ibu/chat');?>');
 }, 1000); // the "3000" here refers to the time to refresh the div. it is in milliseconds.
 });
 // ]]></script>
@@ -110,7 +111,7 @@ $('#results').load('<?php echo base_url('C_user/chat');?>');
 $(document).ready(function(){
   $("#submit").click(function(){
     $.ajax({
-      url:"<?php echo base_url();?>C_user/add",
+      url:"<?php echo base_url();?>C_Ibu/add",
       type: "POST",
       data:$("#form_chat").serialize(),
       success: function(data){

@@ -4,22 +4,41 @@ class Chat extends CI_Controller{
 	public function __construct() {
 		parent:: __construct();
 		$this->load->model('M_Login');
+		$this->load->model('M_Ibu'); // nambahin ini
 	}
 	function index(){
 		$data = $this->session->userdata('level');
-		 $this->db->select('*');    
-    $this->db->from('ibu_hamil');
-    //$this->db->join('m_vehicle', 'vehicle_in.license_plate = m_vehicle.license_plate');
-    //$this->db->where(array('vehicle_in.user_id' => $session));
-    $hj=$this->db->get()->result();
-	$data2=array(
+		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
+		$this->db->select('*');    
+	    $this->db->from('ibu_hamil');
+	    //$this->db->join('m_vehicle', 'vehicle_in.license_plate = m_vehicle.license_plate');
+	    //$this->db->where(array('vehicle_in.user_id' => $session));
+	    $hj=$this->db->get()->result();
+		
+		$data2=array(
 			"x"=>$hj,
 		);
-	//$x['data'] = json_encode($check);
-	
+
+		
+		if ($data == "bidan") {
 			$this->load->view('bidan/template/header');
 			$this->load->view('bidan/chat_konsul',$data2);
 			$this->load->view('bidan/template/footer');
+		}
+		elseif ($data == "ibu") {
+			$this->db->select('*');    
+		    $this->db->from('bidan');
+		    $bidan=$this->db->get()->result();
+		    
+		    $data_bidan=array(
+				"list_bidan"=>$bidan,
+			);
+
+			$this->load->view('ibu/template/header', $id);
+			$this->load->view('ibu/chat_konsul',$data_bidan, $id);
+			$this->load->view('ibu/template/footer');
+		}
+			
 	}
   public function add()
 	{

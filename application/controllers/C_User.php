@@ -52,10 +52,16 @@ class C_User extends CI_Controller{
   public function add()
 	{
 		$session= $this->session->userdata('id_user');
+		$this->db->select('*');    
+		$this->db->from('bidan');
+		$this->db->where('id_user', $session);
+		$bidan=$this->db->get()->result();
+		$id_bidan = $bidan[0]->id_bidan;
+
 		$id= $this->session->userdata('id_userchat');
 		$this->db->select('*');
 		$this->db->from('percakapan');
-		$this->db->where(array('id_bidan'=> $session, 'id_ibu'=> $id));
+		$this->db->where(array('id_bidan'=> $id_bidan, 'id_ibu'=> $id));
 		$query=$this->db->get();
       if ($query->num_rows() == 0){
 		  $data=array(
@@ -78,7 +84,7 @@ class C_User extends CI_Controller{
 	  }else{
 		  $this->db->select('*');
 		$this->db->from('percakapan');
-		$this->db->where(array('id_bidan'=> $session, 'id_ibu'=> $id));
+		$this->db->where(array('id_bidan'=> $id_bidan, 'id_ibu'=> $id));
 		$query=$this->db->get()->result();
 		 $arr=$query;
 		foreach($arr as $data):	
@@ -115,6 +121,7 @@ class C_User extends CI_Controller{
 		$this->db->where(array('id_bidan'=> $session, 'id_ibu'=> $id));
 		$query=$this->db->get()->result();
 		 $arr=$query;
+		 print_r($arr);
 		foreach($arr as $data):	
 		$dataer=array(
 				"read_bidan"=>'Sudah',
@@ -127,19 +134,27 @@ class C_User extends CI_Controller{
 		redirect(base_url("C_User/in")); 
 	}
 	public function chat()
-	{
-		$session= $this->session->userdata('id_user');
-		$id= $this->session->userdata('id_userchat');
+	{		
+		$session= $this->session->userdata('id_user'); //id_user? bidan?
+		$this->db->select('*');    
+		$this->db->from('bidan');
+		$this->db->where('id_user', $session);
+		$bidan=$this->db->get()->result();
+		$id_bidan = $bidan[0]->id_bidan;
 		// $get = $this->m_produk->get_data('users',array('user_id' =>$session));
+		$id= $this->session->userdata('id_userchat'); //id pasien = 14
 		$this->db->select('*');
 		$this->db->from('detail_percakapan');
 		$this->db->join('percakapan', 'detail_percakapan.id_pesan = percakapan.id_pesan');
-		$this->db->join('bidan', 'percakapan.id_bidan = bidan.id_user');
+		$this->db->join('bidan', 'percakapan.id_bidan = bidan.id_bidan');
 		$this->db->join('ibu_hamil', 'percakapan.id_ibu = ibu_hamil.id_user');
-		$this->db->where(array('percakapan.id_bidan'=> $session, 'percakapan.id_ibu'=> $id));
+		$this->db->where('percakapan.id_bidan', $id_bidan);
+		$this->db->where('percakapan.id_ibu', $id);
+		// $this->db->where(array('percakapan.id_bidan'=> $id_bidan, 'percakapan.id_ibu'=> $id));
 		//$this->db->where();
 		//$this->db->order_by('users.user_id','Desc');
 		$user=$this->db->get()->result();
+		// print_r($user);
 		$data=array(
 			"all"=>$user,
 		);

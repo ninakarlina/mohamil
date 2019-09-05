@@ -5,7 +5,7 @@ if ($row->id_kirim == $ir ){
 	?>
 <div class="direct-chat-msg right">
                       <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right"><?php echo $row->nama_bidan; ?></span>
+                        <span class="direct-chat-name pull-right"><?php echo $row->nama_ibu; ?></span>
                         <span class="direct-chat-timestamp pull-left"><?php echo $row->waktu; ?></span>
                       </div>
                       <!-- /.direct-chat-info -->
@@ -22,7 +22,7 @@ if ($row->id_kirim == $ir ){
 	?>
 <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left"><?php echo $row->nama_ibu; ?></span>
+                        <span class="direct-chat-name pull-left"><?php echo $row->nama_bidan; ?></span>
                         <span class="direct-chat-timestamp pull-right"><?php echo $row->waktu; ?></span>
                       </div>
                       <!-- /.direct-chat-info -->
