@@ -13,8 +13,11 @@ class C_detil_ibu_hamil extends CI_Controller{
 		$id = $this->session->userdata('id_user');
 		$data['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($user)->result();
 		$data['ibu_hamil'] = $this->M_Ibu->tampil_ibu_hamil($id)->result();
+		$id_ibu = $data['ibu_hamil'][0]->id_ibu;
+		$where = array('id_ibu' => $id_ibu);
 		$data['ibu'] = $this->M_Ibu->edit_ibu($id);
-		$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($id);
+		$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
+		// print_r($where);
 		$data['kode'] = $this->M_Ibu->buat_kode();
 
 		$this->load->view('ibu/template/header', $data);
@@ -125,7 +128,8 @@ public function insert(){
 					'cara_persalinan_akhir'      	 	=> $this->input->post('cara_persalinan_akhir'),);
 	
 	$this->M_Ibu->insert($data3, 'catatan_kes_ibu');
-    redirect(base_url() . "C_detil_ibu" ,'refresh');  } 
+    redirect(base_url() . "C_detil_ibu" ,'refresh');  
+} 
   
   function form_update($id_ibu){ 	
 	
@@ -135,17 +139,11 @@ public function insert(){
 	$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
     $user = $this->session->userdata('level');
 
-		if ($user == 'admin') {
-			$this->load->view('admin/template/header');
-			$this->load->view('admin/data_ibu/edit_ibu', $data);
-			$this->load->view('admin/template/footer');
-		}elseif ($user == 'bidan') {
-			$this->load->view('bidan/template/header');
-			$this->load->view('bidan/data_ibu/edit_ibu', $data);
-			$this->load->view('bidan/template/footer');
-		}else{
-			exit();
-		}
+		
+	$this->load->view('ibu/template/header');
+	$this->load->view('bidan/data_ibu/edit_ibu', $data);
+	$this->load->view('bidan/template/footer');
+		
   }
     	
   public function update_ibu(){
@@ -213,7 +211,7 @@ public function insert(){
 	$this->db->update('catatan_kes_ibu',$data3);
 	//$this->M_Ibu->update_ibu($where,$data3,'catatan_kes_ibu');
           
-    redirect(base_url() . "C_detil_ibu" ,'refresh');
+    redirect(base_url() . "C_detil_ibu_hamil" ,'refresh');
         
   }
   

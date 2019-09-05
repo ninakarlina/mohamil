@@ -144,10 +144,14 @@
             <i class="fa fa-user"></i> <span>Data Ibu</span>
           </a>
         </li>
-
-        <li>
-          <a href="<?php echo site_url('C_Periksa/form_input');?>">
+         <li>
+          <a href="<?php echo site_url('C_ibu/artikel');?>">
             <i class="fa fa-pencil-square-o"></i> <span>Artikel</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('C_ibu/kia');?>">
+      <i class="fa fa-file"></i> <span>Panduan KIA</span>
           </a>
         </li>
 
@@ -159,7 +163,7 @@
 
         <li>
           <a href="<?php if (isset($id)) { echo site_url('C_Periksa/riwayat/'.$id); } ?>">
-            <i class="fa fa-pencil-square-o"></i> <span>Pemeriksaan Ibu</span>
+            <i class="fa fa-pencil-square-o"></i> <span>Hasil Pemeriksaan Ibu</span>
           </a>
         </li>
 

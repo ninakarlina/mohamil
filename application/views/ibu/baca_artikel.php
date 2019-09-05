@@ -12,7 +12,7 @@
         </div>
 
         <!-- Main content -->
-        <div class="content body">
+    <div class="content body">
 		<div class="row">
 		<?php $no=1; 
 				foreach($x as $row):
@@ -21,7 +21,7 @@
 		<div class="col-md-12">
     <div class="box box-primary">
       <p class="text-left">
-	  <a href="<?php echo base_url();?>C_ibu/artikel/<?php echo $row->id_artikel?>">
+	  <a href="<?php echo base_url().'gambar/'.$row->gambar?>">
         <?php if (empty($row->gambar)){
 			?>
 			<img src="<?php echo base_url().'gambar/artikel.jpg';?>"style="width:50%">
@@ -36,6 +36,7 @@
 		
     </div>
   </div>
+
 			<?php
 				endforeach;?>
         </div>

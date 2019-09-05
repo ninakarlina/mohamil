@@ -23,7 +23,7 @@
                 <!-- Post -->
                <div class="box-body"> 
           <?php foreach($ibu_hamil as $bu){ ?>
-         <form action="" method="POST">    
+         <form action="<?php echo base_url()."C_detil_ibu_hamil/update_ibu"; ?>" method="POST">    
               <div class="box-body">
                 <input type="hidden" class="form-control" name="id_ibu" placeholder="" value="<?php echo $bu->id_ibu; ?>">
                 <input type="hidden" class="form-control" name="id_user" placeholder="" value="<?php echo $bu->id_user; ?>">
@@ -33,50 +33,62 @@
                 </div>
                 <div class="form-group">
                   <label for="nama_ibu">Nama</label>
-                  <input type="text" class="form-control" name="nama_ibu" placeholder="Masukkan Nama" disabled disabled required="" value="<?php echo $bu->nama_ibu; ?>">
+                  <input type="text" class="form-control" name="nama_ibu" placeholder="Masukkan Nama" required="" value="<?php echo $bu->nama_ibu; ?>">
                 </div>
                   <div class="form-group">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" name="username" placeholder="Username" disabled required="" value="<?php echo $bu->username; ?>">
+                  <input type="text" class="form-control" name="username" placeholder="Username" required="" value="<?php echo $bu->username; ?>">
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" placeholder="Password" disabled required="" value="<?php echo $bu->password; ?>">
+                  <input type="text" class="form-control" name="password" placeholder="Password" required="" value="<?php echo $bu->password; ?>">
                 </div>
                 <div class="form-group">        
-                  <input type="text" name="level" disabled required="" value="ibu" hidden="">
+                  <input type="text" name="level" required="" value="ibu" hidden="">
                 </div>
                 <div class="form-group">
                   <label for="tempat_lahir_ibu">Tempat Lahir</label>
-                  <input type="text" class="form-control" name="tempat_lahir_ibu" placeholder="Masukkan Tempat Lahir" disabled required="" value="<?php echo $bu->tempat_lahir_ibu; ?>">
+                  <input type="text" class="form-control" name="tempat_lahir_ibu" placeholder="Masukkan Tempat Lahir" required="" value="<?php echo $bu->tempat_lahir_ibu; ?>">
                 </div>
                 <div class="form-group">
                   <label for="tgl_lahir_ibu">Tanggal Lahir</label>
-                  <input type="date" class="form-control" name="tgl_lahir_ibu" placeholder="" disabled required="" value="<?php echo $bu->tgl_lahir_ibu; ?>">
+                  <input type="date" class="form-control" name="tgl_lahir_ibu" placeholder="" required="" value="<?php echo $bu->tgl_lahir_ibu; ?>">
                 </div>
                 <div class="form-group">
                   <label for="kehamilan_ke">Kehamilan Ke</label>
-                  <input type="text" class="form-control" name="kehamilan_ke" id="kehamilan_ke" value="<?php echo $bu->kehamilan_ke; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="kehamilan_ke" id="kehamilan_ke" value="<?php echo $bu->kehamilan_ke; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">        
                   <label>Agama</label>
-                 <input type="text" class="form-control" name="kehamilan_ke" id="kehamilan_ke" value="<?php echo $bu->agama_ibu; ?>" disabled required="" onkeypress="return Angkasaja(event)">
-                
+                  <select class="form-control" name="agama_ibu">
+                            <option value="<?php echo $bu->agama_ibu; ?>"><?php echo $bu->agama_ibu; ?></option>
+                            <option value="Islam">Islam</option>
+                            <option value="Khatolik">Khatolik</option>
+                            <option value="Protestan">Protestan</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Hindu">Hindu</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="pendidikan_ibu">Pendidikan</label>
-                  <input type="text" class="form-control" name="pendidikan_ibu" id="pendidikan_ibu" value="<?php echo $bu->pendidikan_ibu; ?>" disabled required="">
+                  <input type="text" class="form-control" name="pendidikan_ibu" id="pendidikan_ibu" value="<?php echo $bu->pendidikan_ibu; ?>" required="">
                 </div>
                 <div class="form-group">
                 <label>Golongan Darah</label>
-                  <input type="text" class="form-control" name="goldar_ibu" id="kehamilan_ke" value="<?php echo $bu->goldar_ibu; ?>" disabled required="" onkeypress="return Angkasaja(event)">
-                
+                  <select class="form-control" name="goldar_ibu">
+                            <option value="<?php echo $bu->goldar_ibu; ?>"><?php echo $bu->goldar_ibu; ?></option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="pekerjaan_ibu">Pekerjaan</label>
-                  <input type="text" class="form-control" name="pekerjaan_ibu" id="pekerjaan_ibu" value="<?php echo $bu->pekerjaan_ibu; ?>" disabled required="">
+                  <input type="text" class="form-control" name="pekerjaan_ibu" id="pekerjaan_ibu" value="<?php echo $bu->pekerjaan_ibu; ?>" required="">
                 </div>
               <!-- /.box-body --> 
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
             </div>
                
@@ -88,30 +100,42 @@
                 <div class="box-body">
                 <div class="form-group">
                   <label for="nama_suami">Nama Suami</label>
-                  <input type="text" class="form-control" name="nama_suami" id="nama_suami" value="<?php echo $bu->nama_suami; ?>" disabled required="">
+                  <input type="text" class="form-control" name="nama_suami" id="nama_suami" value="<?php echo $bu->nama_suami; ?>" required="">
                 </div>
                 <div class="form-group">
                   <label for="tempat_lahir_suami">Tempat Lahir</label>
-                  <input type="text" class="form-control" name="tempat_lahir_suami" id="tempat_lahir_suami" value="<?php echo $bu->tempat_lahir_suami; ?>" disabled required="">
+                  <input type="text" class="form-control" name="tempat_lahir_suami" id="tempat_lahir_suami" value="<?php echo $bu->tempat_lahir_suami; ?>" required="">
                 </div>
                 <div class="form-group">
                  <label>Agama</label>
-                 <input type="text" class="form-control" name="kehamilan_ke" id="kehamilan_ke" value="<?php echo $bu->agama_suami; ?>" disabled required="" onkeypress="return Angkasaja(event)">
-                
+                  <select class="form-control" name="agama_suami">
+                            <option value="<?php echo $bu->agama_suami; ?>"><?php echo $bu->agama_suami; ?></option>
+                            <option value="Islam">Islam</option>
+                            <option value="Khatolik">Khatolik</option>
+                            <option value="Protestan">Protestan</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Hindu">Hindu</option>
+                          </select>
                 </div>
                 <div class="form-group">
                   <label for="pendidikan_suami">Pendidikan</label>
-                  <input type="text" class="form-control" name="pendidikan_suami" id="pendidikan_suami" value="<?php echo $bu->pendidikan_suami; ?>" disabled required="">
+                  <input type="text" class="form-control" name="pendidikan_suami" id="pendidikan_suami" value="<?php echo $bu->pendidikan_suami; ?>" required="">
                 </div>
                <div class="form-group">
                 <label>Golongan Darah</label>
-                 <input type="text" class="form-control" name="kehamilan_ke" id="kehamilan_ke" value="<?php echo $bu->goldar_suami; ?>" disabled required="" onkeypress="return Angkasaja(event)">
-                
+                 <select class="form-control" name="goldar_suami" > 
+                            <option value="<?php echo $bu->goldar_suami; ?>"><?php echo $bu->goldar_suami; ?></option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="pekerjaan_suami">Pekerjaan</label>
-                  <input type="text" class="form-control" name="pekerjaan_suami" id="pekerjaan_suami" value="<?php echo $bu->pekerjaan_suami; ?>" disabled required="">
+                  <input type="text" class="form-control" name="pekerjaan_suami" id="pekerjaan_suami" value="<?php echo $bu->pekerjaan_suami; ?>" required="">
                 </div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
               </div>
               <!-- /.tab-pane -->
@@ -120,32 +144,33 @@
                 <div class="box-body">
                 <div class="form-group">
                   <label for="alamat_rumah">Alamat Rumah</label>
-                  <input type="text" class="form-control" name="alamat_rumah" id="alamat_rumah" value="<?php echo $bu->alamat_rumah; ?>" disabled required="">
+                  <input type="text" class="form-control" name="alamat_rumah" id="alamat_rumah" value="<?php echo $bu->alamat_rumah; ?>" required="">
                 </div>
                 <div class="form-group">
                   <label for="kecamatan">Kecamatan</label>
-                  <input type="text" class="form-control" name="kecamatan" id="kecamatan" value="<?php echo $bu->kecamatan; ?>" disabled required="">
+                  <input type="text" class="form-control" name="kecamatan" id="kecamatan" value="<?php echo $bu->kecamatan; ?>" required="">
                 </div>
                 <div class="form-group">
                   <label for="kabupaten">Kabupaten</label>
-                  <input type="text" class="form-control" name="kabupaten" id="kabupaten" value="<?php echo $bu->kabupaten; ?>" disabled required="">
+                  <input type="text" class="form-control" name="kabupaten" id="kabupaten" value="<?php echo $bu->kabupaten; ?>" required="">
                 </div>
                 <div class="form-group">
                   <label for="no_tlp">Nomor HP</label>
-                  <input type="text" class="form-control" name="no_tlp" id="no_tlp" value="<?php echo $bu->no_tlp; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="no_tlp" id="no_tlp" value="<?php echo $bu->no_tlp; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
               <!-- /.box-body -->
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
               </div>
 
-               <?php } ?>
-
+              <?php } ?>
+              
               <?php foreach($catatan_kes_ibu as $b){ ?>
               <div class="tab-pane" id="kes_ibu">
                 <div class="box-body">
                 <div class="form-group">
                   <label for="hpht">HPHT</label>
-                  <input type="date" class="form-control" name="hpht" id="hpht" disabled value="<?php echo $b->hpht; ?>" onchange="myFunction(this.value)">
+                  <input type="date" class="form-control" name="hpht" id="hpht" value="<?php echo $b->hpht; ?>" onchange="myFunction(this.value)">
                 </div>
                 <div class="form-group">
                   <label for="htp">HTP</label>
@@ -153,59 +178,60 @@
                 </div>
                 <div class="form-group">
                   <label for="lila">Lila</label>
-                  <input type="text" class="form-control" name="lila" id="lila" value="<?php echo $b->lila; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="lila" id="lila" value="<?php echo $b->lila; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="tb">Tinggi Badan</label>
-                  <input type="text" class="form-control" name="tb" id="tb" value="<?php echo $b->tb; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="tb" id="tb" value="<?php echo $b->tb; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">
                   <label for="kontrasepsi_seb_hamil">Kontrasepsi Sebelum Kehamilan</label>
-                  <input type="text" class="form-control" name="kontrasepsi_seb_hamil" id="kontrasepsi_seb_hamil" value="<?php echo $b->kontrasepsi_seb_hamil; ?>" disabled required="" >
+                  <input type="text" class="form-control" name="kontrasepsi_seb_hamil" id="kontrasepsi_seb_hamil" value="<?php echo $b->kontrasepsi_seb_hamil; ?>" required="" >
                 </div>
                 <div class="form-group">
                   <label for="riwayat_penyakit">Riwayat Penyakit</label>
-                  <input type="text" class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" value="<?php echo $b->riwayat_penyakit; ?>"disabled required="">
+                  <input type="text" class="form-control" name="riwayat_penyakit" id="riwayat_penyakit" value="<?php echo $b->riwayat_penyakit; ?>"required="">
                 </div>
                 <div class="form-group">
                   <label for="riwayat_alergi">Riwayat Alergi</label>
-                  <input type="text" class="form-control" name="riwayat_alergi" id="riwayat_alergi" value="<?php echo $b->riwayat_alergi; ?>" disabled required="">
+                  <input type="text" class="form-control" name="riwayat_alergi" id="riwayat_alergi" value="<?php echo $b->riwayat_alergi; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="jml_persalinan">Jumlah Persalinan</label>
-                  <input type="text" class="form-control" name="jml_persalinan" id="jml_persalinan" value="<?php echo $b->jml_persalinan; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_persalinan" id="jml_persalinan" value="<?php echo $b->jml_persalinan; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jml_abortus">Jumlah Abortus</label>
-                  <input type="text" class="form-control" name="jml_abortus" id="jml_abortus" value="<?php echo $b->jml_abortus; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_abortus" id="jml_abortus" value="<?php echo $b->jml_abortus; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">
                   <label for="jml_anak_hidup">Jumlah Anak Hidup</label>
-                  <input type="text" class="form-control" name="jml_anak_hidup" id="jml_anak_hidup" value="<?php echo $b->jml_anak_hidup; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_anak_hidup" id="jml_anak_hidup" value="<?php echo $b->jml_anak_hidup; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jml_premature">Jumlah Anak Lahir Premature</label>
-                  <input type="text" class="form-control" name="jml_premature" id="jml_premature" value="<?php echo $b->jml_premature; ?>" disabled required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="jml_premature" id="jml_premature" value="<?php echo $b->jml_premature; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" disabled required="">
+                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>
-                  <input type="text" class="form-control" name="status_imun_akhir" id="status_imun_akhir" value="<?php echo $b->status_imun_akhir; ?>" disabled required="">
+                  <input type="text" class="form-control" name="status_imun_akhir" id="status_imun_akhir" value="<?php echo $b->status_imun_akhir; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="penolong_persalinan">Penolong Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="penolong_persalinan" id="penolong_persalinan" value="<?php echo $b->penolong_persalinan; ?>" disabled required="">
+                  <input type="text" class="form-control" name="penolong_persalinan" id="penolong_persalinan" value="<?php echo $b->penolong_persalinan; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="cara_persalinan_akhir">Cara Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="cara_persalinan_akhir" id="cara_persalinan_akhir" value="<?php echo $b->cara_persalinan_akhir; ?>" disabled required="">
+                  <input type="text" class="form-control" name="cara_persalinan_akhir" id="cara_persalinan_akhir" value="<?php echo $b->cara_persalinan_akhir; ?>" required="">
                 </div>
                  <div class="box-footer">
               </div>
               <!-- /.box-body --> 
+              <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
           </div>
           <?php } ?>

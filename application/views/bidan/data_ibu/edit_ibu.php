@@ -23,7 +23,7 @@
                 <!-- Post -->
                <div class="box-body"> 
           <?php foreach($ibu_hamil as $bu){ ?>
-         <form action="<?php echo base_url()."C_detil_ibu/update_ibu"; ?>" method="POST">    
+         <form action="<?php echo base_url()."C_detil_ibu_hamil/update_ibu"; ?>" method="POST">    
               <div class="box-body">
                 <input type="hidden" class="form-control" name="id_ibu" placeholder="" value="<?php echo $bu->id_ibu; ?>">
                 <input type="hidden" class="form-control" name="id_user" placeholder="" value="<?php echo $bu->id_user; ?>">

@@ -29,6 +29,10 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assetss/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assetss/datatables/buttons-1.5.6/css/buttons.dataTables.min.css">
+    <script src="<?php echo base_url(); ?>assetss/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="<?php echo base_url(); ?>assetss/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assetss/js/adminlte.js" type="text/javascript"></script>    
     <!-- Fungsi untuk membatasi karakter yang diinputkan -->
     <script language="javascript">
       function getkey(e)
@@ -88,19 +92,10 @@
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
-      <a href="<?=base_url()?>assetss/dist/css/AdminLTE.min.css" class="sidebar-toggle" data-toggle="push-menu" role="button">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Toggle navigation</span>
       </a> 
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-          
-          <!-- Notifications: style can be found in dropdown.less -->
-         
-          <!-- Tasks: style can be found in dropdown.less -->
-         
-        </ul>
-      </div>
+      
     </nav>
   </header>
 
@@ -127,35 +122,35 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
        
-        <li class="treeview">
+        <li>
           <a href="<?php echo site_url('C_User');?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
          
         </li>
        
-        <li class="treeview">
+        <li>
           <a href="<?php echo site_url('C_detil_bidann');?> ">
             <i class="fa fa-user"></i> <span>Bidan</span>
           </a>
         </li>
-        <li class="treeview">
+        <li>
           <a href="<?php echo site_url('C_detil_ibu');?> ">
             <i class="fa fa-user"></i> <span>Ibu</span>
           </a>
          
         </li>
-         <li class="treeview">
+         <li>
           <a href="<?php echo site_url('C_Tema');?> ">
             <i class="fa fa-edit"></i> <span>Tema Artikel</span>
           </a>
         </li>
-         <li class="treeview">
+         <li>
           <a href="<?php echo site_url('C_Tema/list_artikel');?> ">
             <i class="fa fa-edit"></i> <span>Artikel</span>
           </a>
         </li>
-         <li class="treeview">
+         <li>
           <a href="<?php echo site_url('C_Login/logout');?> ">
             <i class="fa fa-sign-out"></i> <span>Logout</span>
           </a>

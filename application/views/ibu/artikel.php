@@ -20,10 +20,11 @@
 		?>
 		<div class="col-md-4">
     <div class="thumbnail">
-      <a href="<?php echo base_url();?>C_ibu/artikel/<?php echo $row->id_artikel?>">
+      <a href="<?php echo base_url();?>C_ibu/view/<?php echo $row->id_artikel?>">
         <?php if (empty($row->gambar)){
 			?>
-			<img src="<?php echo base_url().'gambar/artikel.jpg';?>"style="width:50%">
+			<img src="<?php echo base_url().'gambar/artikel.jpg';?>" style="width:50%">
+
 			<?php
 		}else{?>
 		<img class="img-thumbnail rounded img-responsive float-left" style="max-height: 200px;" src="<?php echo base_url().'gambar/'.$row->gambar?>" alt="Lights" >
