@@ -29,9 +29,9 @@ class C_Tema extends CI_Controller {
   public function insert(){
     	  
     $data = array(
-    				'id_tema'	=> $this->input->post('id_tema'),
-					'tema'      => $this->input->post('tema'),
-				 );
+    	'id_tema'	=> $this->input->post('id_tema'),
+		'tema'      => $this->input->post('tema'),
+	);
 			 
 	$this->M_Tema->insert($data);
 	
@@ -96,9 +96,9 @@ class C_Tema extends CI_Controller {
 
   		$config['upload_path']          = './gambar/';
 		$config['allowed_types']        = 'jpg|png';
-		$config['max_size']             = 100;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
+		// $config['max_size']             = 100;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
 		$config['file_name'] 			= time().$_FILES["gambar"]['name'];
 
 		// print_r($config['allowed_types']);
@@ -113,7 +113,6 @@ class C_Tema extends CI_Controller {
 		print_r($data);
  
 		$this->load->library('upload', $config);
- 		
  		$insert = $this->M_Tema->insert_artikel('artikel', $data);
 
 		if ( ! $this->upload->do_upload('gambar')){
@@ -123,13 +122,11 @@ class C_Tema extends CI_Controller {
 			$data = array('upload_data' => $this->upload->data());
 			redirect(base_url('C_Tema/list_artikel'));
 		}
-
   }
 
   function delete_artikel($id_artikel){
 	
 	$where = array('id_artikel' => $id_artikel);
-	
 	$this->M_Tema->delete_artikel($where,'artikel');
 	
 	redirect(base_url() . "C_Tema/list_artikel" ,'refresh');
@@ -144,23 +141,37 @@ class C_Tema extends CI_Controller {
         $this->load->view('admin/template/header');	
         $this->load->view('admin/artikel/edit_artikel', $data);
         $this->load->view('admin/template/footer');
-  }
+	}
 
      
      public function update_artikel(){
+     	$config['upload_path']          = './gambar/';
+		$config['allowed_types']        = 'jpg|png';
+		// $config['max_size']             = 100;
+		// $config['max_width']            = 1024;
+		// $config['max_height']           = 768;
+		$config['file_name'] 			= time().$_FILES["gambar"]['name'];
        
-    $data = array(
-					'judul'      => $this->input->post('judul'),
-					'isi_artikel'      => $this->input->post('isi_artikel'),
-					'tgl'      => $this->input->post('tgl'),
-	);
-		
-	$where = array('id_artikel' => $this->input->post('id_artikel'));
-         
-	$user=$this->input->post('id_artikel');
-	$this->db->where($where);
-	$this->db->update('artikel', $data);      
-    redirect(base_url() . "C_Tema/list_artikel" ,'refresh');
+    	$data = array(
+			'judul' 	    => $this->input->post('judul'),
+			'isi_artikel'   => $this->input->post('isi_artikel'),
+			'tgl'      		=> $this->input->post('tgl'),
+			'gambar' 		=> $config['file_name']
+		);
+
+		$this->load->library('upload', $config);
+		$where = array('id_artikel' => $this->input->post('id_artikel'));
+
+		$user=$this->input->post('id_artikel');
+		$this->db->where($where);
+		$this->db->update('artikel', $data);      
+		if ( ! $this->upload->do_upload('gambar')){
+			$error = array('error' => $this->upload->display_errors());
+			echo "error";
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+			redirect(base_url() . "C_Tema/list_artikel" ,'refresh');
+		}
         
   }
   

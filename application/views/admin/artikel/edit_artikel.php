@@ -22,7 +22,7 @@
     </div>
     <div class="box-body">
 	<?php foreach($artikel as $da){ ?>
-    <form action="<?php echo base_url()."C_Tema/update_artikel"; ?>" method="POST">		 
+    <form action="<?php echo base_url()."C_Tema/update_artikel"; ?>" method="POST" enctype="multipart/form-data">		 
         <div class="box-body">
            <div class="form-group">
               <!-- <label for="id_tema">Id Artikel</label> -->
@@ -47,8 +47,9 @@
             <div class="form-group">
                   <label for="tema">Gambar</label> <br>
                   <small>format foto jpg / png</small>
-                  <input type="file" class="form-control" name="gambar" value="<?php echo $da->gambar; ?>" id="gambar">
+                  <input type="file" class="form-control" name="gambar" id="gambar">
                 </div>
+              </div>
             
         <!-- /.box-body -->
 

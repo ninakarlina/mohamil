@@ -1,7 +1,3 @@
-<?php 
-
-    // $id_bidan = $tb_periksa_ibu[0]->id_bidan; 
-?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -70,14 +66,14 @@
                     <ul class="contacts-list">
                     <?php foreach($list_bidan as $list): ?>
             <li>
-                        <a href="<?php echo base_url();?>C_Ibu/percakapan/<?php echo $list->id_bidan; ?>">
+                        <a href="<?php echo base_url();?>C_Ibu/percakapan/<?php echo $list->id_bidan; ?>"> <!-- ngerubah id yang di parsing, karna dulu cuma buat bidan -->
                           <img class="contacts-list-img" src="<?php echo base_url();?>assets/dist/img/user2-128x128.jpg">
                           <div class="contacts-list-info">
                             <span class="contacts-list-name">
-                              <?php echo $list->nama_bidan; ?>
-                              <small class="contacts-list-date pull-right"><?php echo $list->tgl_lahir_bidan; ?></small>
+                              <?php echo $list->nama_bidan; ?> <!-- Ngebenerin pemanggilan nama bidan, yang awalya error -->
+                              <small class="contacts-list-date pull-right"><?php echo $list->tgl_lahir_bidan; ?></small> <!-- Ngerubah dari tgl lahir ibu ke tgl lahir bidan -->
                             </span>
-                            <span class="contacts-list-msg"><?php echo $list->tlp_bidan; ?></span>
+                            <span class="contacts-list-msg"><?php echo $list->tlp_bidan; ?></span> <!-- Nampilin no hape bidan -->
                           </div><!-- /.contacts-list-info -->
                         </a>
                       </li><!-- End Contact Item -->
@@ -106,7 +102,7 @@
 $(document).ready(function() {
 $.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
 setInterval(function() {
-$('#results').load('<?php echo base_url('C_Ibu/chat');?>');
+$('#results').load('<?php echo base_url('C_Ibu/chat');?>'); // Ngeganti bagian ini, awalnya C_User/chat
 }, 1000); // the "3000" here refers to the time to refresh the div. it is in milliseconds.
 });
 // ]]></script>
@@ -121,7 +117,7 @@ $(document).ready(function(){
         
       }
     });
-    document.getElementById('pesan').value = '';
+    document.getElementById('pesan').value = ''; // Biar pesannya otomatis ilang setelah mencet send
     return false;
   });
 });

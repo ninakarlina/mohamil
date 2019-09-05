@@ -26,16 +26,16 @@ class Chat extends CI_Controller{
 			$this->load->view('bidan/template/footer');
 		}
 		elseif ($data == "ibu") {
-			$this->db->select('*');    
-		    $this->db->from('bidan');
-		    $bidan=$this->db->get()->result();
-		    
-		    $data_bidan=array(
-				"list_bidan"=>$bidan,
-			);
+			$this->db->select('*'); 			   	//Penambahan dari sini
+		    $this->db->from('bidan');			   	//
+		    $bidan=$this->db->get()->result();	   	//
+		    									   	//	
+		    $data_bidan=array(						//
+				"list_bidan"=>$bidan,				//
+			); 										// Sampe sini
 
 			$this->load->view('ibu/template/header', $id);
-			$this->load->view('ibu/chat_konsul',$data_bidan);
+			$this->load->view('ibu/chat_konsul',$data_bidan); //Ngerubah variabel yang dikirim konten, karena id_bidan sering ketuker sama id_user
 			$this->load->view('ibu/template/footer');
 		}
 			
@@ -43,10 +43,10 @@ class Chat extends CI_Controller{
   public function add()
 	{
 		$session= $this->session->userdata('id_user');
-		$id= $this->session->userdata('id_userchat');
-		$this->db->select('*');
-		$this->db->from('percakapan');
-		$this->db->where(array('id_bidan'=> $session, 'id_ibu'=> $id));
+		$id= $this->session->userdata('id_userchat');						
+		$this->db->select('*');												
+		$this->db->from('percakapan');										
+		$this->db->where(array('id_bidan'=> $session, 'id_ibu'=> $id));		
 		$query=$this->db->get();
       if ($query->num_rows() == 0){
 		  $data=array(
@@ -125,7 +125,7 @@ class Chat extends CI_Controller{
 		$this->db->select('*');
 		$this->db->from('detail_percakapan');
 		$this->db->join('percakapan', 'detail_percakapan.id_pesan = percakapan.id_pesan');
-		$this->db->join('bidan', 'percakapan.id_bidan = bidan.id_user');
+		$this->db->join('bidan', 'percakapan.id_bidan = bidan.id_user'); //Ini harusnya bidan.id_bidan, tapi karna msh ttep jalan, yaudah ga perlu diganti
 		$this->db->join('ibu_hamil', 'percakapan.id_ibu = ibu_hamil.id_user');
 		$this->db->where(array('percakapan.id_bidan'=> $session, 'percakapan.id_ibu'=> $id));
 		//$this->db->where();

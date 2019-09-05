@@ -94,7 +94,7 @@ class C_Ibu extends CI_Controller{
 			$this->db->insert('detail_percakapan',$dataer);
 			//$this->session->unset_userdata('id_chat');
 	  }else{
-		  $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('percakapan');
 		$this->db->where(array('id_bidan'=> $id, 'id_ibu'=> $session));
 		$query=$this->db->get()->result();
@@ -117,18 +117,18 @@ class C_Ibu extends CI_Controller{
 
 	function in(){
 		$data = $this->session->userdata('level');
-		$this->db->select('*');    
-		$this->db->from('bidan');
-		$bidan=$this->db->get()->result();
-		    
-		$data_bidan=array(
-			"list_bidan"=>$bidan,
-		);
+		$this->db->select('*');    				// Penambahan dari sini
+		$this->db->from('bidan');				//
+		$bidan=$this->db->get()->result();		//
+		    									//
+		$data_bidan=array(						//
+			"list_bidan"=>$bidan,				//
+		);										// Sampe sini
 
 		if ($data == 'ibu') {
 			$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
 			$this->load->view('ibu/template/header', $id);
-			$this->load->view('ibu/chat_konsul',$data_bidan, $id);
+			$this->load->view('ibu/chat_konsul',$data_bidan, $id); // nambahin data yang dikirim ke konten chat_konsul
 			$this->load->view('ibu/template/footer');
 		}else{
 			$this->load->view('login');
