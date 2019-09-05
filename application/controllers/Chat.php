@@ -35,7 +35,7 @@ class Chat extends CI_Controller{
 			);
 
 			$this->load->view('ibu/template/header', $id);
-			$this->load->view('ibu/chat_konsul',$data_bidan, $id);
+			$this->load->view('ibu/chat_konsul',$data_bidan);
 			$this->load->view('ibu/template/footer');
 		}
 			

@@ -1,4 +1,7 @@
-<?php $id_bidan = $tb_periksa_ibu[0]->id_bidan; ?>
+<?php 
+
+    // $id_bidan = $tb_periksa_ibu[0]->id_bidan; 
+?>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
