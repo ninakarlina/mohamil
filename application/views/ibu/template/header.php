@@ -151,7 +151,7 @@
         </li>
         <li class="treeview">
           <a href="<?php echo site_url('C_ibu/kia');?>">
-      <i class="fa fa-file"></i> <span>KIA</span>
+      <i class="fa fa-file"></i> <span>Panduan KIA</span>
           </a>
         </li>
 
@@ -163,7 +163,7 @@
 
         <li class="treeview">
           <a href="<?php if (isset($id)) { echo site_url('C_Periksa/riwayat/'.$id); } ?>">
-            <i class="fa fa-pencil-square-o"></i> <span>Pemeriksaan Ibu</span>
+            <i class="fa fa-pencil-square-o"></i> <span>Hasil Pemeriksaan Ibu</span>
           </a>
         </li>
 
