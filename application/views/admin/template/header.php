@@ -128,26 +128,33 @@
           </a>
          
         </li>
+         
+        <li>
+          <a href="<?php echo site_url('C_User');?>">
+            <i class="fa fa-pencil-square-o"></i> <span>Daftar Periksa Ibu</span>
+          </a>
+         
+        </li>
        
         <li>
           <a href="<?php echo site_url('C_detil_bidann');?> ">
-            <i class="fa fa-user"></i> <span>Bidan</span>
+            <i class="fa fa-folder"></i> <span>Data Bidan</span>
           </a>
         </li>
         <li>
           <a href="<?php echo site_url('C_detil_ibu');?> ">
-            <i class="fa fa-user"></i> <span>Ibu</span>
+            <i class="fa fa-folder"></i> <span>Data Ibu</span>
           </a>
          
         </li>
          <li>
           <a href="<?php echo site_url('C_Tema');?> ">
-            <i class="fa fa-edit"></i> <span>Tema Artikel</span>
+            <i class="fa fa-folder"></i> <span>Tema Artikel</span>
           </a>
         </li>
          <li>
           <a href="<?php echo site_url('C_Tema/list_artikel');?> ">
-            <i class="fa fa-edit"></i> <span>Artikel</span>
+            <i class="fa fa-folder"></i> <span>Artikel</span>
           </a>
         </li>
          <li>

@@ -128,15 +128,10 @@
           </a>
         </li>
        
-       <!--  <li>
-          <a href="<?php echo site_url('C_detil_bidann');?> ">
-            <i class="fa fa-user"></i> <span>Bidan</span>
-          </a>
-        </li> -->
-
+      
         <li>
           <a href="<?php echo site_url('C_detil_ibu');?> ">
-            <i class="fa fa-user"></i> <span>Data Ibu</span>
+            <i class="fa fa-folder"></i> <span>Data Ibu</span>
           </a>
         </li>
 
@@ -148,7 +143,12 @@
 
         <li>
           <a href="<?php echo site_url('C_Periksa/form_input');?>">
-            <i class="fa fa-pencil-square-o"></i> <span>Pemeriksaan Ibu</span>
+            <i class="fa fa-stethoscope"></i> <span>Pemeriksaan Ibu</span>
+          </a>
+        </li>
+        <li>
+          <a href="<?php echo site_url('C_Periksa/form_input');?>">
+            <i class="fa fa-area-chart"></i> <span>Riwayat Pemeriksaan Ibu</span>
           </a>
         </li>
 

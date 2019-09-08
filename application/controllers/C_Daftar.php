@@ -1,29 +1,17 @@
  <?php
-class C_Data_user extends CI_Controller{
+class C_Daftar extends CI_Controller{
 	public function __construct() {
 		parent:: __construct();
 		$this->load->model('M_Login');
 		$this->load->model('M_Ibu');
-		$this->load->model('M_Data_user');
 		$this->load->helper(array('form', 'url'));
 	}
 	function index(){
 
-		$pengguna = $this->session->userdata('level');
-
-		$data['user'] = $this->M_Data_user->tampil_data()->result();
-
-		if ($pengguna == 'admin') {
 			$this->load->view('admin/template/header');
 			$this->load->view('admin/data_user/list_user', $data);
 			$this->load->view('admin/template/footer');
-		}elseif ($pengguna == 'bidan') {
-			$this->load->view('bidan/template/header');
-			$this->load->view('bidan/data_user/list_user', $data);
-			$this->load->view('bidan/template/footer');
-		}else{
-			exit();
-		}
+
 
 	}
 

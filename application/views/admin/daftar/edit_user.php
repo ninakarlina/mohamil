@@ -9,7 +9,6 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#"><i></i> Edit Data Bidan</a></li>
       </ol>
-      <br>
 <div class="box">
     <div class="box-header with-border">
       <h3 class="box-title">Edit Data Bidan</h3>
@@ -27,40 +26,31 @@
         <div class="box-body">
            <div class="form-group">
              <!--  <label for="id_artikel">Id Artikel</label> -->
-              <input type="hidden" class="form-control" name="id_bidan"  value="<?php echo $bi->id_bidan; ?>"  placeholder="" >
-              <input type="hidden" class="form-control" name="id_user"  value="<?php echo $bi->id_user; ?>"  placeholder="" >
+              <input type="hidden" class="form-control" name="id_bidan"  value="<?php echo $bi->id_bidan; ?>" id="id_bidan" placeholder="" >
             </div>
             <div class="form-group">
               <label for="nama_bidan">Nama Bidan</label>
-              <input type="text" class="form-control" name="nama_bidan"  value="<?php echo $bi->nama_bidan; ?>" placeholder="Nama Bidan">
-            </div>
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input type="text" class="form-control" name="username"  value="<?php echo $bi->username; ?>" placeholder="Username">
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" class="form-control" name="password"  value="<?php echo $bi->password; ?>"  placeholder="No HP">
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" name="email"  value="<?php echo $bi->email; ?>" placeholder="Email">
+              <input type="text" class="form-control" name="nama_bidan"  value="<?php echo $bi->nama_bidan; ?>" id="nama_bidan" placeholder="Nama Bidan">
             </div>
             <div class="form-group">
               <label for="alamat_bidan">Alamat Bidan</label>
-              <input type="text" class="form-control" name="alamat_bidan"  value="<?php echo $bi->alamat_bidan; ?>" placeholder="Alamat Bidan">
+              <input type="text" class="form-control" name="alamat_bidan"  value="<?php echo $bi->alamat_bidan; ?>" id="alamat_bidan" placeholder="Alamat Bidan">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" name="email"  value="<?php echo $bi->email; ?>" id="email" placeholder="Email">
             </div>
             <div class="form-group">
               <label for="tlp_bidan">No HP</label>
-              <input type="text" class="form-control" name="tlp_bidan"  value="<?php echo $bi->tlp_bidan; ?>"  placeholder="No HP">
+              <input type="text" class="form-control" name="tlp_bidan"  value="<?php echo $bi->tlp_bidan; ?>" id="tlp_bidan" placeholder="No HP">
             </div>
             <div class="form-group">
               <label for="tempat_lahir_bidan">Tempat Lahir Bidan</label>
-              <input type="text" class="form-control" name="tempat_lahir_bidan"  value="<?php echo $bi->tempat_lahir_bidan; ?>" placeholder="Tempat Lahir Bidan">
+              <input type="text" class="form-control" name="tempat_lahir_bidan"  value="<?php echo $bi->tempat_lahir_bidan; ?>" id="tempat_lahir_bidan" placeholder="Tempat Lahir Bidan">
             </div>
             <div class="form-group">
               <label for="tgl_lahir_bidan">Tanggal Lahir Bidan</label>
-              <input type="date" class="form-control" name="tgl_lahir_bidan"  value="<?php echo $bi->tgl_lahir_bidan; ?>" placeholder="">
+              <input type="date" class="form-control" name="tgl_lahir_bidan"  value="<?php echo $bi->tgl_lahir_bidan; ?>" id="tgl_lahir_bidan" placeholder="">
             </div>
             
         <!-- /.box-body -->
@@ -77,5 +67,4 @@
     
     <!-- /.box-footer-->
 </div>
-</section>
 <!-- /.box -->

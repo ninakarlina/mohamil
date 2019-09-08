@@ -34,6 +34,7 @@
                   <th>Kode Ibu</th>
                   <th>Nama</th>
                   <th>Username</th>
+                  <th>Email</th>
                   <th>Tempat Lahir</th>
                   <th>Tanggal Lahir</th>
                   <th>Alamat Rumah</th>
@@ -53,6 +54,7 @@
             <td><?php echo $bu->kode_ibu; ?></td>
             <td><?php echo $bu->nama_ibu; ?></td>
             <td><?php echo $bu->username; ?></td>
+            <td><?php echo $bu->email; ?></td>
             <td><?php echo $bu->tempat_lahir_ibu; ?></td>
             <td><?php echo $bu->tgl_lahir_ibu; ?></td>
             <td><?php echo $bu->alamat_rumah; ?></td>

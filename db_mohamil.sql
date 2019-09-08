@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Sep 2019 pada 17.37
+-- Waktu pembuatan: 08 Sep 2019 pada 08.39
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.4
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `artikel` (
   `id_artikel` int(5) NOT NULL,
   `id_tema` int(11) NOT NULL,
-  `judul` varchar(20) NOT NULL,
+  `judul` varchar(100) NOT NULL,
   `tgl` date NOT NULL,
   `gambar` varchar(50) NOT NULL,
   `isi_artikel` text NOT NULL
@@ -42,10 +42,7 @@ CREATE TABLE `artikel` (
 --
 
 INSERT INTO `artikel` (`id_artikel`, `id_tema`, `judul`, `tgl`, `gambar`, `isi_artikel`) VALUES
-(15, 6, 'judul', '2019-07-08', '1562608224ktp.jpg', 'isi'),
-(16, 7, 'ff', '2019-07-08', '1562608672ktp.jpg', 'ff'),
-(17, 7, 'judul', '2019-07-16', '1563300492ktp.jpg', 'isisis'),
-(18, 9, 'Ikuti Kelas Ibuu  uu', '2019-07-16', '1563301100hamil.jpg', 'Ibu mendapatkan informasi dan saling bertukar informasi mengenai kehamilan, persalinan, nifas serta perawatan bayi baru lahir. (sumber:Buku KIA)');
+(20, 9, 'Kehamilan', '2019-09-04', '1567709719surat-nikah.jpg', '<p><strong>Perbanyak istirahat.</strong> Ketidaknyamanan yang terjadi pada masa ini bisa menguras energimu. Namun, cobalah untuk memperbanyak waktu istirahat meski kondisi tubuhmu saat ini sangat sulit untuk hal itu. Setidaknya dengan kondisi tubuh fit dan berenergi,</p>\r\n\r\n<p>Jadi, mulailah untuk tidur malam beberapa jam lebih awal dan sisihkan waktu untuk tidur siang juga, walau hanya berbaring di sofa.</p>\r\n\r\n<p><strong>Belanja keperluan rumah tangga.</strong> Pasca melahirkan, sebagian besar waktumu dan pasangan akan terpakai untuk merawat Si Kecil. Jangankan mengurus keperluan rumah tangga, untuk mengurus keperluan pribadi saja waktumu menjadi sangat terbatas. Oleh karena itu, lebih baik jika kamu manfaatkan masa-masa penantian ini untuk berbelanja keperluan rumah tangga dalam jumlah yang lebih banyak dari belanja bulananmu pada umumnya.</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -55,21 +52,20 @@ INSERT INTO `artikel` (`id_artikel`, `id_tema`, `judul`, `tgl`, `gambar`, `isi_a
 
 CREATE TABLE `bidan` (
   `id_bidan` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
   `nama_bidan` varchar(50) NOT NULL,
-  `alamat_bidan` varchar(30) NOT NULL,
-  `email` varchar(20) NOT NULL,
+  `alamat_bidan` text NOT NULL,
   `tlp_bidan` varchar(15) NOT NULL,
   `tempat_lahir_bidan` varchar(20) NOT NULL,
-  `tgl_lahir_bidan` date NOT NULL,
-  `id_user` int(10) NOT NULL
+  `tgl_lahir_bidan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `bidan`
 --
 
-INSERT INTO `bidan` (`id_bidan`, `nama_bidan`, `alamat_bidan`, `email`, `tlp_bidan`, `tempat_lahir_bidan`, `tgl_lahir_bidan`, `id_user`) VALUES
-(2, 'Fikriiiiii', 'Lohbener', 'fikri12@gmail.com', '0898867368734', 'Indramayu', '2019-08-12', 2);
+INSERT INTO `bidan` (`id_bidan`, `id_user`, `nama_bidan`, `alamat_bidan`, `tlp_bidan`, `tempat_lahir_bidan`, `tgl_lahir_bidan`) VALUES
+(3, 20, 'Fikri', 'Lohbener', '08987835734', 'indramayu', '2019-09-11');
 
 -- --------------------------------------------------------
 
@@ -79,6 +75,7 @@ INSERT INTO `bidan` (`id_bidan`, `nama_bidan`, `alamat_bidan`, `email`, `tlp_bid
 
 CREATE TABLE `catatan_kes_ibu` (
   `id_kes_ibu` int(10) NOT NULL,
+  `id_ibu` int(10) NOT NULL,
   `hpht` date NOT NULL,
   `htp` date NOT NULL,
   `lila` varchar(5) NOT NULL,
@@ -93,16 +90,29 @@ CREATE TABLE `catatan_kes_ibu` (
   `jarak_hamil_persalinan_terakhir` date NOT NULL,
   `status_imun_akhir` int(5) NOT NULL,
   `penolong_persalinan` varchar(20) NOT NULL,
-  `cara_persalinan_akhir` varchar(20) NOT NULL,
-  `id_ibu` int(10) NOT NULL
+  `cara_persalinan_akhir` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `catatan_kes_ibu`
 --
 
-INSERT INTO `catatan_kes_ibu` (`id_kes_ibu`, `hpht`, `htp`, `lila`, `tb`, `kontrasepsi_seb_hamil`, `riwayat_penyakit`, `riwayat_alergi`, `jml_persalinan`, `jml_abortus`, `jml_anak_hidup`, `jml_premature`, `jarak_hamil_persalinan_terakhir`, `status_imun_akhir`, `penolong_persalinan`, `cara_persalinan_akhir`, `id_ibu`) VALUES
-(9, '2019-09-10', '2020-06-17', '8', '89', 'h', 'h', 'h', 7, 7, 7, 7, '2019-06-30', 0, 'h', 'h', 4);
+INSERT INTO `catatan_kes_ibu` (`id_kes_ibu`, `id_ibu`, `hpht`, `htp`, `lila`, `tb`, `kontrasepsi_seb_hamil`, `riwayat_penyakit`, `riwayat_alergi`, `jml_persalinan`, `jml_abortus`, `jml_anak_hidup`, `jml_premature`, `jarak_hamil_persalinan_terakhir`, `status_imun_akhir`, `penolong_persalinan`, `cara_persalinan_akhir`) VALUES
+(10, 5, '2019-09-11', '2020-06-18', '15', '160', 'pil KB', '-', '-', 4, 1, 3, 0, '2019-09-04', 2016, 'Bidan', 'Normal'),
+(11, 6, '2019-09-05', '0000-00-00', '25', '160', '-', '-', '-', 2, 0, 2, 0, '2019-09-03', 2017, 'Bidan', 'Normal');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `daftar_periksa`
+--
+
+CREATE TABLE `daftar_periksa` (
+  `id_pendaftaran` int(10) NOT NULL,
+  `id_ibu` int(10) NOT NULL,
+  `id_bidan` int(10) NOT NULL,
+  `tgl_daftar` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -141,7 +151,12 @@ INSERT INTO `detail_percakapan` (`id_pesan`, `id_kirim`, `pesan`, `waktu`, `read
 (5, 6, 'dh jhkh l l', '2019-09-01 06:05:28', 'Sudah', 'Belum'),
 (6, 2, 'cek', '2019-09-02 04:07:10', 'Sudah', 'Belum'),
 (6, 2, 'chat', '2019-09-02 04:46:35', 'Sudah', 'Belum'),
-(7, 2, 'liss', '2019-09-02 17:04:49', 'Sudah', 'Belum');
+(7, 2, 'liss', '2019-09-02 17:04:49', 'Sudah', 'Belum'),
+(8, 14, 'Cek', '2019-09-05 20:39:10', 'Sudah', 'Belum'),
+(9, 14, 'yu fikriii', '2019-09-05 20:45:16', 'Sudah', 'Belum'),
+(10, 14, 'assalamu\'alaikum bu', '2019-09-06 13:34:48', 'Sudah', 'Belum'),
+(10, 17, 'wa\'alaikumussalam, ada yang bisa saya bantu?', '2019-09-06 13:43:04', 'Sudah', 'Belum'),
+(10, 14, 'gak jadi bu', '2019-09-06 13:44:06', 'Sudah', 'Belum');
 
 -- --------------------------------------------------------
 
@@ -151,6 +166,7 @@ INSERT INTO `detail_percakapan` (`id_pesan`, `id_kirim`, `pesan`, `waktu`, `read
 
 CREATE TABLE `ibu_hamil` (
   `id_ibu` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL,
   `kode_ibu` varchar(10) NOT NULL,
   `nama_ibu` varchar(50) NOT NULL,
   `tempat_lahir_ibu` varchar(20) NOT NULL,
@@ -169,31 +185,16 @@ CREATE TABLE `ibu_hamil` (
   `alamat_rumah` varchar(50) NOT NULL,
   `kecamatan` varchar(20) NOT NULL,
   `kabupaten` varchar(20) NOT NULL,
-  `no_tlp` varchar(13) NOT NULL,
-  `hpht` date NOT NULL,
-  `htp` date NOT NULL,
-  `lila` varchar(5) NOT NULL,
-  `tb` varchar(5) NOT NULL,
-  `kontrasepsi_seb_hamil` varchar(20) NOT NULL,
-  `riwayat_penyakit` varchar(50) NOT NULL,
-  `riwayat_alergi` varchar(50) NOT NULL,
-  `jml_persalinan` varchar(5) NOT NULL,
-  `jml_abortus` varchar(5) NOT NULL,
-  `jml_anak_hidup` varchar(5) NOT NULL,
-  `jml_premature` varchar(5) NOT NULL,
-  `jarak_hamil_persalinan_terakhir` date NOT NULL,
-  `status_imun_akhir` varchar(10) NOT NULL,
-  `penolong_persalinan` varchar(20) NOT NULL,
-  `cara_persalinan_akhir` varchar(20) NOT NULL,
-  `id_user` int(10) NOT NULL
+  `no_tlp` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `ibu_hamil`
 --
 
-INSERT INTO `ibu_hamil` (`id_ibu`, `kode_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tgl_lahir_ibu`, `kehamilan_ke`, `agama_ibu`, `pendidikan_ibu`, `goldar_ibu`, `pekerjaan_ibu`, `nama_suami`, `tempat_lahir_suami`, `agama_suami`, `pendidikan_suami`, `goldar_suami`, `pekerjaan_suami`, `alamat_rumah`, `kecamatan`, `kabupaten`, `no_tlp`, `hpht`, `htp`, `lila`, `tb`, `kontrasepsi_seb_hamil`, `riwayat_penyakit`, `riwayat_alergi`, `jml_persalinan`, `jml_abortus`, `jml_anak_hidup`, `jml_premature`, `jarak_hamil_persalinan_terakhir`, `status_imun_akhir`, `penolong_persalinan`, `cara_persalinan_akhir`, `id_user`) VALUES
-(4, 'PB004', 'Lida', 'im', '2019-09-01', 3, 'Islam', '-', 'A', '-', 'nu', 'im', 'Islam', '-', 'A', '-', '-', '-', '-', '098', '0000-00-00', '0000-00-00', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', 12);
+INSERT INTO `ibu_hamil` (`id_ibu`, `id_user`, `kode_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tgl_lahir_ibu`, `kehamilan_ke`, `agama_ibu`, `pendidikan_ibu`, `goldar_ibu`, `pekerjaan_ibu`, `nama_suami`, `tempat_lahir_suami`, `agama_suami`, `pendidikan_suami`, `goldar_suami`, `pekerjaan_suami`, `alamat_rumah`, `kecamatan`, `kabupaten`, `no_tlp`) VALUES
+(5, 14, 'PB015', 'Anggun', 'Indramayu', '2019-09-02', 2, 'Islam', '-', 'AB', '-', 'Suno', 'Indramayu', 'Islam', 'SMK', 'A', 'Karyawati', 'Ds. Legok', 'Lohbener', 'Indramayu', '08988766676'),
+(6, 15, 'PB011', 'Naina', 'indramayu', '1980-09-03', 3, 'Islam', 'sma', 'A', 'irt', 'Reno', 'Indramayu', 'Islam', 'SMK', 'A', 'Karyawan', 'Ds. Krasak', 'Lohbener', 'Indramayu', '08987867867');
 
 -- --------------------------------------------------------
 
@@ -214,7 +215,10 @@ CREATE TABLE `percakapan` (
 INSERT INTO `percakapan` (`id_pesan`, `id_ibu`, `id_bidan`) VALUES
 (5, 6, '2'),
 (6, 8, '2'),
-(7, 12, '2');
+(7, 12, '2'),
+(8, 14, '3'),
+(9, 14, '2'),
+(10, 14, '5');
 
 -- --------------------------------------------------------
 
@@ -225,6 +229,7 @@ INSERT INTO `percakapan` (`id_pesan`, `id_ibu`, `id_bidan`) VALUES
 CREATE TABLE `tb_periksa_ibu` (
   `id_periksa_ibu` int(10) NOT NULL,
   `id_ibu` int(10) NOT NULL,
+  `id_bidan` int(10) NOT NULL,
   `berat_badan` int(5) NOT NULL,
   `umur_kehamilan` int(5) NOT NULL,
   `letak_janin` varchar(20) NOT NULL,
@@ -237,32 +242,22 @@ CREATE TABLE `tb_periksa_ibu` (
   `tindakan` varchar(30) NOT NULL,
   `nasehat` varchar(50) NOT NULL,
   `tgl_periksa` date NOT NULL,
-  `tgl_kembali` date NOT NULL,
-  `id_bidan` int(10) NOT NULL
+  `tgl_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Struktur dari tabel `tb_persalinan`
+-- Dumping data untuk tabel `tb_periksa_ibu`
 --
 
-CREATE TABLE `tb_persalinan` (
-  `id_persalinan` varchar(5) NOT NULL,
-  `id_bidan` int(10) NOT NULL,
-  `id_ibu` int(10) NOT NULL,
-  `berat_bayi` int(5) NOT NULL,
-  `lingkar_kepala` int(5) NOT NULL,
-  `nama_bayi` varchar(30) NOT NULL,
-  `anak_ke` int(5) NOT NULL,
-  `jam_lahir` time NOT NULL,
-  `tgl_lahir_bayi` date NOT NULL,
-  `tempat_lahir_bayi` varchar(20) NOT NULL,
-  `kelamin` enum('L','P') NOT NULL,
-  `panjang_bayi` int(5) NOT NULL,
-  `jenis_persalinan` varchar(20) NOT NULL,
-  `kondisi` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `tb_periksa_ibu` (`id_periksa_ibu`, `id_ibu`, `id_bidan`, `berat_badan`, `umur_kehamilan`, `letak_janin`, `tinggi_fundus`, `keluhan`, `tekanan_darah`, `denyut_jantung_bayi`, `kaki_bengkak`, `hasil_lab`, `tindakan`, `nasehat`, `tgl_periksa`, `tgl_kembali`) VALUES
+(1, 5, 2, 50, 15, '-', 10, '-', '100/20', 10, 'Ya', 'HB=11,4', 'TT3', 'Baca panduan hal 4-5', '2019-09-03', '2019-09-11'),
+(2, 5, 2, 55, 17, 'Kepala', 20, 'Pusing', '120/80', 20, 'Ya', 'HB=11,4', 'terapi', 'baca panduan hal 8-9', '2019-09-11', '2019-09-25'),
+(3, 6, 2, 60, 10, '-', 15, '-', '120/80', 0, 'Ya', '-', 'Terapi', 'baca panduan hal 2-5', '2019-09-04', '2019-09-11'),
+(4, 6, 17, 54, 20, 'Kepala', 30, 'pusing', '100/80', 15, 'Ya', 'normal', 'Fe', 'baca panduan hal 2-5', '2019-09-06', '2019-09-11'),
+(5, 6, 17, 60, 25, 'Sungsang', 31, 'tidak ada', '100/90', 20, 'Ya', 'HB=11,4 dan gula dar', 'Fe', 'baca panduan hal 5-10', '2019-09-06', '2019-09-27'),
+(6, 6, 17, 60, 20, '-', 100, 'n', '100', 20, 'Ya', 'ik', 'n', 'n', '2019-09-07', '2019-09-04'),
+(7, 6, 17, 50, 40, 'Kepala', 30, 'j', 'j', 0, 'Ya', 'j', 'j', 'j', '2019-09-07', '2019-09-24'),
+(8, 6, 17, 60, 30, 'Sungsang', 40, 'sakit', '100/80', 20, 'Ya', 'hb', 'fe', 'jagalah kesehatan', '2019-09-08', '2019-09-17');
 
 -- --------------------------------------------------------
 
@@ -293,6 +288,7 @@ CREATE TABLE `user` (
   `id_user` int(10) NOT NULL,
   `username` varchar(10) NOT NULL,
   `password` varchar(10) NOT NULL,
+  `email` varchar(30) NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -300,14 +296,12 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
-(1, 'admin', 'admin', 'admin'),
-(2, 'bidan', 'bidan', 'bidan'),
-(4, 'nina', '12345', 'ibu'),
-(6, 'lisda', '123', 'ibu'),
-(10, 'gin', 'gin', 'ibu'),
-(11, 'n', 'n', 'ibu'),
-(12, 'lida', '123', 'ibu');
+INSERT INTO `user` (`id_user`, `username`, `password`, `email`, `level`) VALUES
+(1, 'admin', 'admin', '', 'admin'),
+(14, 'anggun', '1234', '', 'ibu'),
+(15, 'naina54', '12345', '', 'ibu'),
+(17, 'bidan', 'bidan', '', 'bidan'),
+(20, 'bidan', 'bidan', 'fikri@gmail.com', 'bidan');
 
 --
 -- Indexes for dumped tables
@@ -317,25 +311,43 @@ INSERT INTO `user` (`id_user`, `username`, `password`, `level`) VALUES
 -- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
-  ADD PRIMARY KEY (`id_artikel`);
+  ADD PRIMARY KEY (`id_artikel`),
+  ADD KEY `fk_tema` (`id_tema`);
 
 --
 -- Indeks untuk tabel `bidan`
 --
 ALTER TABLE `bidan`
-  ADD PRIMARY KEY (`id_bidan`);
+  ADD PRIMARY KEY (`id_bidan`),
+  ADD KEY `fk_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `catatan_kes_ibu`
 --
 ALTER TABLE `catatan_kes_ibu`
-  ADD PRIMARY KEY (`id_kes_ibu`);
+  ADD PRIMARY KEY (`id_kes_ibu`),
+  ADD KEY `fk_ibu_hamil` (`id_ibu`);
+
+--
+-- Indeks untuk tabel `daftar_periksa`
+--
+ALTER TABLE `daftar_periksa`
+  ADD PRIMARY KEY (`id_pendaftaran`),
+  ADD KEY `fk_ibu` (`id_ibu`),
+  ADD KEY `fk_bidan` (`id_bidan`);
+
+--
+-- Indeks untuk tabel `detail_percakapan`
+--
+ALTER TABLE `detail_percakapan`
+  ADD KEY `fk_percakapan` (`id_pesan`);
 
 --
 -- Indeks untuk tabel `ibu_hamil`
 --
 ALTER TABLE `ibu_hamil`
-  ADD PRIMARY KEY (`id_ibu`);
+  ADD PRIMARY KEY (`id_ibu`),
+  ADD KEY `fk_user2` (`id_user`);
 
 --
 -- Indeks untuk tabel `percakapan`
@@ -347,7 +359,8 @@ ALTER TABLE `percakapan`
 -- Indeks untuk tabel `tb_periksa_ibu`
 --
 ALTER TABLE `tb_periksa_ibu`
-  ADD PRIMARY KEY (`id_periksa_ibu`);
+  ADD PRIMARY KEY (`id_periksa_ibu`),
+  ADD KEY `fk_ibu2` (`id_ibu`);
 
 --
 -- Indeks untuk tabel `tema`
@@ -369,37 +382,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
-  MODIFY `id_artikel` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_artikel` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `bidan`
 --
 ALTER TABLE `bidan`
-  MODIFY `id_bidan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_bidan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `catatan_kes_ibu`
 --
 ALTER TABLE `catatan_kes_ibu`
-  MODIFY `id_kes_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_kes_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `daftar_periksa`
+--
+ALTER TABLE `daftar_periksa`
+  MODIFY `id_pendaftaran` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `ibu_hamil`
 --
 ALTER TABLE `ibu_hamil`
-  MODIFY `id_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `percakapan`
 --
 ALTER TABLE `percakapan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_periksa_ibu`
 --
 ALTER TABLE `tb_periksa_ibu`
-  MODIFY `id_periksa_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_periksa_ibu` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tema`
@@ -411,7 +430,54 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `artikel`
+--
+ALTER TABLE `artikel`
+  ADD CONSTRAINT `fk_tema` FOREIGN KEY (`id_tema`) REFERENCES `tema` (`id_tema`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `bidan`
+--
+ALTER TABLE `bidan`
+  ADD CONSTRAINT `fk_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `catatan_kes_ibu`
+--
+ALTER TABLE `catatan_kes_ibu`
+  ADD CONSTRAINT `fk_ibu_hamil` FOREIGN KEY (`id_ibu`) REFERENCES `ibu_hamil` (`id_ibu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `daftar_periksa`
+--
+ALTER TABLE `daftar_periksa`
+  ADD CONSTRAINT `fk_bidan` FOREIGN KEY (`id_bidan`) REFERENCES `bidan` (`id_bidan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ibu` FOREIGN KEY (`id_ibu`) REFERENCES `ibu_hamil` (`id_ibu`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `detail_percakapan`
+--
+ALTER TABLE `detail_percakapan`
+  ADD CONSTRAINT `fk_percakapan` FOREIGN KEY (`id_pesan`) REFERENCES `percakapan` (`id_pesan`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `ibu_hamil`
+--
+ALTER TABLE `ibu_hamil`
+  ADD CONSTRAINT `fk_user2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+
+--
+-- Ketidakleluasaan untuk tabel `tb_periksa_ibu`
+--
+ALTER TABLE `tb_periksa_ibu`
+  ADD CONSTRAINT `fk_ibu2` FOREIGN KEY (`id_ibu`) REFERENCES `ibu_hamil` (`id_ibu`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
