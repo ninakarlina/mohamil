@@ -7,11 +7,12 @@ class C_Daftar extends CI_Controller{
 		$this->load->helper(array('form', 'url'));
 	}
 	function index(){
+		
+			$data['ibu_hamil'] = $this->M_Ibu->tampil_user('ibu_hamil')->result();
 
 			$this->load->view('admin/template/header');
-			$this->load->view('admin/data_user/list_user', $data);
+			$this->load->view('admin/daftar/list_daftar', $data);
 			$this->load->view('admin/template/footer');
-
 
 	}
 
