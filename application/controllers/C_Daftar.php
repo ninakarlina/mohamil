@@ -8,6 +8,7 @@ class C_Daftar extends CI_Controller{
 		$this->load->model('M_Daftar');
 		$this->load->helper(array('form', 'url'));
 	}
+
 	function index(){
 		
 			$data['ibu_hamil'] = $this->M_Ibu->tampil_user()->result();
@@ -16,6 +17,22 @@ class C_Daftar extends CI_Controller{
 			$this->load->view('admin/template/header');
 			$this->load->view('admin/daftar/list_daftar', $data);
 			$this->load->view('admin/template/footer');
+
+	}
+
+	function history(){
+		
+		$tanggal = $this->input->post('tanggal_history');
+		$data['tanggal'] = array('tanggal' => $tanggal);
+		
+		$data['ibu_hamil'] = $this->M_Ibu->tampil_user()->result();
+		$data['daftar_periksa'] = $this->M_Daftar->cek_data_history($data['tanggal']['tanggal'])->result();
+		
+		// print_r($data['daftar_periksa']);
+
+		$this->load->view('admin/template/header');
+		$this->load->view('admin/daftar/history_daftar', $data);
+		$this->load->view('admin/template/footer');
 
 	}
 
@@ -34,8 +51,6 @@ class C_Daftar extends CI_Controller{
 		}else{
 			exit();
 		}
-
-
   }
   
   public function insert(){
@@ -43,12 +58,36 @@ class C_Daftar extends CI_Controller{
 	$now = date('Y-m-d');
 	$nama = $this->input->post('ibu');
 
+	if ($nama == "null") {
+		$this->session->set_flashdata("message", "
+		<div class='alert alert-danger' role='alert'>
+			Anda belum memilih nama ibu!
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        		<span aria-hidden='true'>&times;</span>
+        	</button>
+        </div>");
+		redirect(base_url() . "C_Daftar" ,'refresh');
+	}
+
 	$this->db->select('nama_ibu, id_ibu');
 	$this->db->from('ibu_hamil');			
 	$this->db->where('nama_ibu', $nama);			
 	$bidan=$this->db->get()->result();
 
-	// print_r($bidan[0]->id_ibu);
+	$check = $this->M_Daftar->cek_data($bidan[0]->id_ibu)->result();
+
+	// print_r(count($check));
+
+	if (count($check) >= 1) {
+		$this->session->set_flashdata("message", "
+		<div class='alert alert-danger' role='alert'>
+			Ibu sudah didaftarkan hari ini!
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        		<span aria-hidden='true'>&times;</span>
+        	</button>
+        </div>");
+        redirect(base_url() . "C_Daftar" ,'refresh');
+	}
 
     $data = array(
 		'id_ibu'     	=> $bidan[0]->id_ibu,

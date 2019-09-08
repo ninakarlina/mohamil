@@ -37,11 +37,14 @@
                 </thead>
                 <tbody>
         <?php
-        // print_r($id_bidan[0]->id_bidan);
+          date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+          $now = date('Y-m-d');
           $no = 1;
+          $data = 0;
           // foreach ($ibu_hamil as $bu)
           foreach ($daftar_periksa as $list)
           {
+            if ($list->tgl_daftar == $now) {
         ?>
           <tr>
             <td width="50px"><?php echo $no++ ?></td>
@@ -62,6 +65,11 @@
           </td>
                 </tr>  
         <?php
+            }
+            $data++;
+          }
+          if ($data == 0) {
+            echo "<tr style='text-align: center;'><td colspan='6'> Tidak ada data </td></tr>";
           }
         ?>
                 </tfoot>

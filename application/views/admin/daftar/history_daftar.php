@@ -88,15 +88,15 @@
                 </thead>
                 <tbody>
         <?php
-          date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
-          $now = date('Y-m-d');
           $no = 1;
           $data = 0;
+          $history_tanggal = $tanggal['tanggal'];
+          print_r($history_tanggal);
           foreach ($daftar_periksa as $list)
           {
-            if ($list->tgl_daftar == $now) {
+            if ($list->tgl_daftar == $history_tanggal) {
         ?>
-          <tr>
+         <tr>
             <td width="50px"><?php echo $no++ ?></td>
             <td><?php echo $list->nama_ibu; ?></td>
             <td><?php echo $list->tgl_lahir_ibu; ?></td>

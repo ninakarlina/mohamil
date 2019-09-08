@@ -31,6 +31,31 @@
             return $query;
 		}
 
+		function cek_data($id){ 
+			date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+			$now = date('Y-m-d');
+
+			$this->db->select('*');
+            $this->db->from('daftar_periksa');
+            $this->db->where('tgl_daftar',$now);
+            $this->db->where('id_ibu',$id);
+            $query = $this->db->get();
+            return $query;
+		}
+
+		function cek_data_history($tanggal){ 
+			// date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+			// $now = date('Y-m-d');
+
+			$this->db->select('*');
+            $this->db->from('daftar_periksa');
+            $this->db->join('ibu_hamil','ibu_hamil.id_ibu=daftar_periksa.id_ibu');
+            $this->db->where('tgl_daftar',$tanggal);
+            // $this->db->where('id_ibu',$id);
+            $query = $this->db->get();
+            return $query;
+		}
+
 		function tampil_data_di_bidan(){ 
 			// $user = $this->session->userdata('id_user');
 			//$where = array('id_ibu' => $id);
