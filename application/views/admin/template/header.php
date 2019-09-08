@@ -130,7 +130,7 @@
         </li>
          
         <li>
-          <a href="<?php echo site_url('C_User');?>">
+          <a href="<?php echo site_url('C_Daftar');?>">
             <i class="fa fa-pencil-square-o"></i> <span>Daftar Periksa Ibu</span>
           </a>
          
