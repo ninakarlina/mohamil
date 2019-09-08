@@ -37,23 +37,26 @@
                 </thead>
                 <tbody>
         <?php
+        // print_r($id_bidan[0]->id_bidan);
           $no = 1;
-          foreach ($ibu_hamil as $bu)
+          // foreach ($ibu_hamil as $bu)
+          foreach ($daftar_periksa as $list)
           {
         ?>
           <tr>
             <td width="50px"><?php echo $no++ ?></td>
-            <td><?php echo $bu->kode_ibu; ?></td>
-            <td><?php echo $bu->nama_ibu; ?></td>
-            <td><?php echo $bu->alamat_rumah; ?></td>
-            <td><?php echo $bu->nama_suami; ?></td>
+            <td><?php echo $list->kode_ibu; ?></td>
+            <td><?php echo $list->nama_ibu; ?></td>
+            <td><?php echo $list->alamat_rumah; ?></td>
+            <td><?php echo $list->nama_suami; ?></td>
+            <!-- <input type="hidden" name="id_bidan" value="<?php echo $id_bidan[0]->id_bidan ?>"> -->
             
             <td>
           <?php
 
-            // echo anchor(site_url('C_periksa/form_add/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Periksa</button>'); 
+            echo anchor(site_url('C_periksa/form_add/'.$list->id_ibu),'<button type="button" class="btn btn-info btn-xs">Periksa</button>'); 
             echo '&nbsp';
-			echo anchor(site_url('C_periksa/riwayat/'.$bu->id_ibu),'<button type="button" class="btn btn-warning btn-xs">Riwayat</button>'); 
+			// echo anchor(site_url('C_periksa/riwayat/'.$bu->id_ibu),'<button type="button" class="btn btn-warning btn-xs">Riwayat</button>'); 
              
           ?>
           </td>

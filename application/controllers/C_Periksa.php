@@ -4,6 +4,7 @@ class C_Periksa extends CI_Controller{
 		parent:: __construct();
 		$this->load->model('M_Login');
 		$this->load->model('M_Ibu');
+		$this->load->model('M_Daftar');
 		$this->load->model('M_Periksa');
 		// $this->load->model('M_Kes_ibu');
 		$this->load->helper(array('form', 'url'));
@@ -46,12 +47,47 @@ class C_Periksa extends CI_Controller{
 		}
 
   }
-  function form_add($id){
+
+  function periksa(){
 		
 		$user = $this->session->userdata('level');
-		$data['ibu_hamil'] = $this->M_Periksa->tampil_data('ibu_hamil')->result();
-	//$user = $this->session->userdata('id_user');
-			//$where = array('id_ibu' => $id);
+		$data['ibu_hamil'] = $this->M_Ibu->tampil_user('ibu_hamil')->result();
+		$data['id_bidan'] = $this->M_Daftar->get_id_bidan()->result();
+		$data['daftar_periksa'] = $this->M_Daftar->tampil_data_di_bidan()->result();
+		
+		// print_r($id_bidan[0]->id_bidan);
+
+		if ($user == 'admin') {
+			$this->load->view('admin/template/header');
+			$this->load->view('admin/data_ibu/daftar_ibu', $data);
+			$this->load->view('admin/template/footer');
+		}elseif ($user == 'bidan') {
+			$this->load->view('bidan/template/header');
+			$this->load->view('bidan/data_ibu/daftar_ibu', $data);
+			$this->load->view('bidan/template/footer');
+		}else{
+			exit();
+		}
+
+  }
+  function form_add($id){
+
+  	$id_bidan = $this->M_Daftar->get_id_bidan()->result();
+
+  	$data = array(
+		'id_bidan' 		=> $id_bidan[0]->id_bidan
+	);
+	$where = array('id_ibu' => $id);
+	$this->db->where($where);
+	$this->db->update('daftar_periksa', $data);
+	// print_r($id_bidan[0]->id_bidan);
+
+	$user = $this->session->userdata('level');
+	$data['ibu_hamil'] = $this->M_Periksa->tampil_data('ibu_hamil')->result();
+
+	$user = $this->session->userdata('id_user');
+			$where = array('id_ibu' => $id);
+
 			$this->db->select('*');
             $this->db->from('ibu_hamil');
             $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu');
@@ -77,12 +113,12 @@ class C_Periksa extends CI_Controller{
 			$check2=$this->db->get()->result();
 			$dataeee = json_encode($check2);
 			$data=array(
-			"title"=>'tampil_admin',
-			"all"=>$query,
-			"data"=>$datae,
-			"darah"=>$dataee,
-			"jantung"=>$dataeee,
-			"alle"=>$querye,
+				"title"=>'tampil_admin',
+				"all"=>$query,
+				"data"=>$datae,
+				"darah"=>$dataee,
+				"jantung"=>$dataeee,
+				"alle"=>$querye,
 			);
 			$this->load->view('bidan/template/header');
 			$this->load->view('bidan/periksa_ibu/add_periksa', $data);

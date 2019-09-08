@@ -28,11 +28,11 @@
     <link href="<?php echo base_url(); ?>assetss/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assetss/css/style.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assetss/datatables/buttons-1.5.6/css/buttons.dataTables.min.css">
-    <script src="<?php echo base_url(); ?>assetss/plugins/jQuery/jQuery-2.1.3.min.js"></script>
-    <!-- Bootstrap 3.3.2 JS -->
-    <script src="<?php echo base_url(); ?>assetss/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="<?php echo base_url(); ?>assetss/js/adminlte.js" type="text/javascript"></script>    
+
+    <link href="<?php echo base_url(); ?>assets/bower_components/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assetss/datatables/buttons-1.5.6/css/buttons.dataTables.min.css">    
+
     <!-- Fungsi untuk membatasi karakter yang diinputkan -->
     <script language="javascript">
       function getkey(e)
@@ -75,6 +75,7 @@
         return false;
       }
     </script>
+    
 
  </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -170,4 +171,3 @@
 
 
 </section> 
-

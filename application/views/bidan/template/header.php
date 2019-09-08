@@ -142,7 +142,7 @@
         </li>
 
         <li>
-          <a href="<?php echo site_url('C_Periksa/form_input');?>">
+          <a href="<?php echo site_url('C_Periksa/periksa');?>">
             <i class="fa fa-stethoscope"></i> <span>Pemeriksaan Ibu</span>
           </a>
         </li>

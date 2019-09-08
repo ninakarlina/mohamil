@@ -4,11 +4,14 @@ class C_Daftar extends CI_Controller{
 		parent:: __construct();
 		$this->load->model('M_Login');
 		$this->load->model('M_Ibu');
+		$this->load->library('session');
+		$this->load->model('M_Daftar');
 		$this->load->helper(array('form', 'url'));
 	}
 	function index(){
 		
-			$data['ibu_hamil'] = $this->M_Ibu->tampil_user('ibu_hamil')->result();
+			$data['ibu_hamil'] = $this->M_Ibu->tampil_user()->result();
+			$data['daftar_periksa'] = $this->M_Daftar->tampil_data()->result();
 
 			$this->load->view('admin/template/header');
 			$this->load->view('admin/daftar/list_daftar', $data);
@@ -36,20 +39,33 @@ class C_Daftar extends CI_Controller{
   }
   
   public function insert(){
-    	  
-    $data = array(
-    				'id_user'		=> $this->input->post('id_user'),
-					'nama'			=> $this->input->post('nama'),
-					'username'    	=> $this->input->post('username'),
-					'password'  	=> $this->input->post('password'),
-					'email'     	=> $this->input->post('email'),
-					'level'     	=> $this->input->post('level'),
+   	date_default_timezone_set('Asia/Jakarta'); # add your city to set local time zone
+	$now = date('Y-m-d');
+	$nama = $this->input->post('ibu');
 
-				 );
+	$this->db->select('nama_ibu, id_ibu');
+	$this->db->from('ibu_hamil');			
+	$this->db->where('nama_ibu', $nama);			
+	$bidan=$this->db->get()->result();
+
+	// print_r($bidan[0]->id_ibu);
+
+    $data = array(
+		'id_ibu'     	=> $bidan[0]->id_ibu,
+		'tgl_daftar'     	=> $now,
+	 );
 			 
-	$this->M_Data_user->insert($data);
+	$this->M_Daftar->insert($data);
+
+	$this->session->set_flashdata("message", "
+		<div class='alert alert-success' role='alert'>
+			Ibu telah didaftarkan
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        		<span aria-hidden='true'>&times;</span>
+        	</button>
+        </div>");
 	
-    redirect(base_url() . "C_Data_user" ,'refresh');
+    redirect(base_url() . "C_Daftar" ,'refresh');
   } 
   
   function form_update($id_user){ 	

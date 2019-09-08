@@ -7,6 +7,14 @@
 
     <!-- jQuery 2.1.3 -->
     <script src="<?php echo base_url(); ?>assetss/plugins/jQuery/jQuery-2.1.3.min.js"></script>
+
+    <script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/bower_components/select2/dist/js/select2.full.min.js" type="text/javascript"></script>    
+    
+
+    <!-- Bootstrap 3.3.2 JS -->
+    <script src="<?php echo base_url(); ?>assetss/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url(); ?>assetss/js/adminlte.js" type="text/javascript"></script>    
     <!-- Bootstrap 3.3.2 JS -->
     <script src="<?php echo base_url(); ?>assetss/js/bootstrap.min.js" type="text/javascript"></script>    
     <!-- datepicker -->
@@ -39,11 +47,26 @@
 	<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assetss/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assetss/datatables/buttons-1.5.6/js/buttons.html5.min.js"></script>
 	<script type="text/javascript" language="javascript" src="<?php echo base_url(); ?>assetss/datatables/buttons-1.5.6/js/buttons.print.min.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+
+    })
+  </script>
     <script type="text/javascript">
       $(function () {
         // datepicker plugin
         $('.date-picker').datepicker({
           autoclose: true,
+          dateFormat: 'dd-mm-yy',
+          todayHighlight: true
+        });
+
+        $('.datepicker').datepicker({
+          autoclose: true,
+          format: 'yyyy-mm-dd',
           todayHighlight: true
         });
 
