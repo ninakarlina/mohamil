@@ -37,17 +37,29 @@
   <div class="login-box-body">
 
                 <?php
-                if ($this->session->flashdata('gagal')) {
-                echo "<div class='card-body'>";
-                echo "<div class='alert alert-primary' role ='alert'>";
-                echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
-                echo $this->session->flashdata('gagal');
-                echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>";
-                echo "</div>";
-                echo "</div>";
-                }
+                    if ($this->session->flashdata('gagal')) {
+                        echo "<div class='card-body'>";
+                        echo "<div class='alert alert-primary' role ='alert'>";
+                        echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
+                        echo $this->session->flashdata('gagal');
+                        echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                              </button>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
+
+                    else if ($this->session->flashdata('message')) {
+                        echo "<div class='card-body'>";
+                        echo "<div class='alert alert-primary' role ='alert'>";
+                        // echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
+                        echo $this->session->flashdata('message');
+                        echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                              </button>";
+                        echo "</div>";
+                        echo "</div>";
+                    }
                 ?>
     <p class="login-box-msg">Silahkan Login</p>
     <form action="<?php echo site_url('C_Login/proses_login'); ?>" method="post" enctype="multipart/form-data">

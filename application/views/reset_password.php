@@ -40,11 +40,11 @@
                 if ($this->session->flashdata('message')) {
                 echo "<div class='card-body'>";
                 echo "<div class='alert alert-primary' role ='alert'>";
-                echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
+                // echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
                 echo $this->session->flashdata('message');
-                echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                        <span aria-hidden='true'>&times;</span>
-                      </button>";
+                // echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                //         <span aria-hidden='true'>&times;</span>
+                //       </button>";
                 echo "</div>";
                 echo "</div>";
                 }
@@ -53,11 +53,11 @@
     <!-- <h4>Forgot your password?</h4> -->
     <form action="<?php echo base_url('C_forgot/do_reset_password/'.$id_user) ?>" method="post">
       <div class="form-group has-feedback">
-        <input id="inputPassword" type="password" name="password_baru" class="form-control" placeholder="New Password" required="required" autofocus="autofocus">
+        <input id="inputPassword" type="password" name="password_baru" class="form-control" placeholder="Password Baru" required="required" autofocus="autofocus">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password_konfirmasi" id="Konfirmasi"  class="form-control" placeholder="Confirm new Password" required="required">
+        <input type="password" name="password_konfirmasi" id="Konfirmasi"  class="form-control" placeholder="Konfirmasi Password baru" required="required">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="row">

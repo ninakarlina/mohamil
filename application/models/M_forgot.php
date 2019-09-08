@@ -5,7 +5,7 @@ class M_forgot extends CI_Model {
 	{
 		$query = $this->db->select('*')
 		->from ('user')
-		// ->where('email',$email)
+		->where('email',$email)
 		->get();
 		return $query->result_array();
 	}

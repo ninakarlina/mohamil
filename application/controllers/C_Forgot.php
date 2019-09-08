@@ -23,11 +23,10 @@ class C_Forgot extends CI_Controller {
     $data = $this->M_forgot->read_email($this->input->post('email'));
     // print_r($data[0]['id_user']);
     // $data[0]['id_user'] = $this->M_forgot->read_email("coba");
-    $data[0]['email'] = "maulana27051998@gmail.com";
+    // $data[0]['email'] = "maulana27051998@gmail.com";
     // $email = $data[0]['id_user'];
 
-    // if (count($data)>=1) {
-    if ($data) {
+    if (count($data)==1) {
           //Load email library
           $this->load->library('email');
           //SMTP & mail configuration
@@ -104,19 +103,21 @@ class C_Forgot extends CI_Controller {
         $this->session->set_flashdata("message", "<div class='alert alert-danger' role='alert'>Password minimal 8 character salah!<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                               <span aria-hidden='true'>&times;</span>
                             </button></div>");
+        redirect('C_forgot/reset_password/'.$id_user);
       } elseif ($this->input->post('password_baru')!=$this->input->post('password_konfirmasi')) {
         $this->session->set_flashdata("message", "<div class='alert alert-danger' role='alert'>Password konfirmasi salah!<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                               <span aria-hidden='true'>&times;</span>
                             </button></div>");
+        redirect('C_forgot/reset_password/'.$id_user);
       } else {
         $data = array(
             'password' => $this->input->post("password_konfirmasi")
         );
         $this->M_forgot->reset($data,$id_user);
-        $this->session->set_flashdata("message", "<div class='alert alert-danger' role='alert'>Password berhasil di reset! silahkan login dengan password baru.<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+        $this->session->set_flashdata("message", "<div class='alert alert-success' role='alert'>Password berhasil di reset! silahkan login dengan password baru.<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                               <span aria-hidden='true'>&times;</span>
                             </button></div>");
       }
-      redirect('C_forgot/reset_password/'.$id_user);
+      redirect('C_login');
     }
 }
