@@ -55,16 +55,6 @@
 			$this->db->delete($table);
 		}
 
-		// $this->db->select('id_ibu');
-		// $this->db->from('table2');
-		// $this->db->where('table2.title', $title);
-		// $where_clause = $this->db->get_compiled_select();
-
-		// #Create main query
-		// $this->db->where('table1.user_id', $user_id); 
-		// $this->db->where("`id` NOT IN ($where_clause)", NULL, FALSE);
-		// $this->db->delete('table1');
-
 	  public function search($keyword){
     $this->db->like('kode_ibu', $keyword)->or_like('nama_ibu', $keyword); //mencari data yang serupa dengan keyword
     return $this->db->get('ibu_hamil')->result();

@@ -38,10 +38,6 @@
                   <input type="text" class="form-control" name="alamat_bidan" id="alamat_bidan" placeholder="Alamat Bidan" required="">
                 </div>
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="text" class="form-control" name="email" id="email" placeholder="Email" required="">
-                </div>
-                <div class="form-group">
                   <label for="tlp_bidan">No Hp</label>
                   <input type="text" class="form-control" name="tlp_bidan" id="tlp_bidan" placeholder="No HP" required="">
                 </div>
@@ -51,7 +47,11 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" id="password" placeholder="Password" required="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
                 </div>
                  <div class="form-group">        
                   <input type="text" name="level" required="" value="bidan" hidden="">

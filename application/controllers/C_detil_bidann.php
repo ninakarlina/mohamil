@@ -26,9 +26,10 @@ class C_detil_bidann extends CI_Controller{
   public function insert(){
    
    $data = array(
-    				'id_user'		  		=> $this->input->post('id_user'),
+    				'id_user'		  		=> '',
 					'username'      		=> $this->input->post('username'),
 					'password'    			=> $this->input->post('password'),
+					'email'       	  		=> $this->input->post('email'),
 					'level'       	  		=> $this->input->post('level'),
 					
 				 );
@@ -40,7 +41,6 @@ class C_detil_bidann extends CI_Controller{
     				'id_bidan'		  		=> '',
 					'nama_bidan'      		=> $this->input->post('nama_bidan'),
 					'alamat_bidan'    		=> $this->input->post('alamat_bidan'),
-					'email'       	  		=> $this->input->post('email'),
 					'tlp_bidan'      		=> $this->input->post('tlp_bidan'),
 					'tempat_lahir_bidan'	=> $this->input->post('tempat_lahir_bidan'),
 					'tgl_lahir_bidan'       => $this->input->post('tgl_lahir_bidan'),
@@ -80,6 +80,7 @@ class C_detil_bidann extends CI_Controller{
     $data = array(
 					'username'      		=> $this->input->post('username'),
 					'password'    			=> $this->input->post('password'),
+					'email'       	  		=> $this->input->post('email'),
 					'level'       	  		=> $this->input->post('level'),
 					
 				 );
@@ -94,7 +95,6 @@ class C_detil_bidann extends CI_Controller{
     $datas = array(
     				'nama_bidan'      		=> $this->input->post('nama_bidan'),
 					'alamat_bidan'    		=> $this->input->post('alamat_bidan'),
-					'email'       	  		=> $this->input->post('email'),
 					'tlp_bidan'      		=> $this->input->post('tlp_bidan'),
 					'tempat_lahir_bidan'	=> $this->input->post('tempat_lahir_bidan'),
 					'tgl_lahir_bidan'       => $this->input->post('tgl_lahir_bidan'),

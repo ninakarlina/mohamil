@@ -41,7 +41,11 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" placeholder="Password" disabled required="" value="<?php echo $bu->password; ?>">
+                  <input type="text" class="form-control" name="password" placeholder="Masukkan Password" disabled required="" value="<?php echo $bu->password; ?>">
+                </div>
+                 <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Masukkan email" disabled required="" value="<?php echo $bu->email; ?>">
                 </div>
                 <div class="form-group">        
                   <input type="text" name="level" disabled required="" value="ibu" hidden="">

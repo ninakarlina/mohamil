@@ -210,9 +210,15 @@
                   <label for="umur_kehamilan">Masukkan Usia Kehamilan (Minggu)</label>
                   <input type="text" class="form-control" name="umur_kehamilan" id="umur_kehamilan" placeholder="Masukkan Berapa Minggu Usia Kehamilan" required="" onkeypress="return Angkasaja(event)">
                 </div>
-                <div class="form-group">
-                  <label for="letak_janin">Letak Janin (Kep/Su/Li)</label>
-                  <input type="text" class="form-control" name="letak_janin" id="letak_janin" placeholder="Masukkan Letak Janin" required="">
+               <div class="form-group">
+                <label>Letak Janin</label>
+                 <select class="form-control" name="letak_janin" > 
+                            <option disabled diselected>-- Pilih --</option>
+                            <option value="-">-</option>
+                            <option value="Kepala">Kepala</option>
+                            <option value="Sungsang">Sungsang</option>
+                            <option value="Melintang">Melintang</option>
+                  </select>
                 </div>
                  <div class="form-group">
                   <label for="tinggi_fundus">Tinggi Fundus (Cm)</label>

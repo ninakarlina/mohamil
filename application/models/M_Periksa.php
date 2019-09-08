@@ -30,6 +30,17 @@
             $query = $this->db->get();
             return $query;
 		}
+
+		function tampil_bidan($id){ 
+			$user = $this->session->userdata('id_user');
+			//$where = array('id_ibu' => $id);
+			$this->db->select('*');
+            $this->db->from('tb_periksa_ibu');
+            $this->db->join('bidan','tb_periksa_ibu.id_bidan=bidan.id_bidan');
+            $this->db->where('tb_periksa_ibu.id_bidan',$id);
+            $query = $this->db->get();
+            return $query;
+		}
 		
 		// menampilkan data yang akan di update
 		function edit_data($where,$table){		

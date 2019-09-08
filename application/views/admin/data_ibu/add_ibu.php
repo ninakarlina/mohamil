@@ -37,7 +37,11 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" id="password" placeholder="Password" required="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                </div>
+                 <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required="">
                 </div>
                 <div class="form-group">        
                   <input type="text" name="level" required="" value="ibu" hidden="">

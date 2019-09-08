@@ -73,9 +73,10 @@ class C_detil_ibu extends CI_Controller{
 public function insert(){
 
    	  $data = array(
-    				'id_user'		  		=> $this->input->post('id_user'),
+    				'id_user'		  		=> '',
 					'username'      		=> $this->input->post('username'),
 					'password'    			=> $this->input->post('password'),
+					'email'					=> $this->input->post('password'),
 					'level'       	  		=> $this->input->post('level'),
 					
 				 );
@@ -84,7 +85,7 @@ public function insert(){
    
    	$id_user = $this->db->insert_id();
     $datas = array(
-    				'id_ibu'		  					=> $this->input->post('id_ibu'),
+    				'id_ibu'		  					=> '',
     				'id_user'		  					=> $id_user,
     				'kode_ibu'							=> $this->input->post('kode_ibu'),
 					'nama_ibu'      					=> $this->input->post('nama_ibu'),
@@ -189,6 +190,8 @@ public function insert(){
 	$datas = array(
 				    'username'							=> $this->input->post('username'),
 				    'password'							=> $this->input->post('password'),
+				    'email'								=> $this->input->post('email'),
+
 	);
 	
 	$where = array('id_user' => $this->input->post('id_user'));
