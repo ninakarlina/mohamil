@@ -98,7 +98,14 @@
             <td><?php echo $list->no_tlp; ?></td>
             
             <td>
-              Menunggu
+              <?php
+              if ($list->id_bidan == null) {
+                echo "<button type='button' class='btn btn-warning btn-xs'>Menunggu</button>";
+              }
+              else {
+                echo "<button type='button' class='btn btn-success btn-xs'>Sudah Diperiksa</button>";
+              }
+               ?>
           <?php
 
             // echo anchor(site_url('C_detil_ibu/read/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Detail</button>'); 
