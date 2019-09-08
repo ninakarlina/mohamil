@@ -48,6 +48,11 @@ class C_Login extends CI_Controller{
         $this->load->view('login',$data);
     }
 
+    public function forgot()
+    {
+            $this->load->view('forgot');
+    }
+
 
     public function logout(){
         $this->session->unset_userdata('admin');

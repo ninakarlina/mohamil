@@ -30,18 +30,18 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Login</b>MoHamil</a>
+    <a href="">Reset Password</a>
   </div>
 
   <!-- /.login-logo -->
   <div class="login-box-body">
 
                 <?php
-                if ($this->session->flashdata('gagal')) {
+                if ($this->session->flashdata('message')) {
                 echo "<div class='card-body'>";
                 echo "<div class='alert alert-primary' role ='alert'>";
                 echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
-                echo $this->session->flashdata('gagal');
+                echo $this->session->flashdata('message');
                 echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                         <span aria-hidden='true'>&times;</span>
                       </button>";
@@ -49,19 +49,19 @@
                 echo "</div>";
                 }
                 ?>
-    <p class="login-box-msg">Silahkan Login</p>
-    <form action="<?php echo site_url('C_Login/proses_login'); ?>" method="post" enctype="multipart/form-data">
+    <p class="login-box-msg">Lupa Password?</p>
+    <!-- <h4>Forgot your password?</h4> -->
+    <form action="<?php echo base_url('C_forgot/do_reset_password/'.$id_user) ?>" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input id="inputPassword" type="password" name="password_baru" class="form-control" placeholder="New Password" required="required" autofocus="autofocus">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <input type="password" name="password_konfirmasi" id="Konfirmasi"  class="form-control" placeholder="Confirm new Password" required="required">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
-         <a href="<?=base_url()?>C_forgot">Forgot password?</a>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
