@@ -91,7 +91,7 @@
           $no = 1;
           $data = 0;
           $history_tanggal = $tanggal['tanggal'];
-          print_r($history_tanggal);
+          // print_r($history_tanggal);
           foreach ($daftar_periksa as $list)
           {
             if ($list->tgl_daftar == $history_tanggal) {

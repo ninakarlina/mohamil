@@ -22,7 +22,6 @@
 		// menampilkan data 
 		function tampil_data($id){ 
 			$user = $this->session->userdata('id_user');
-			//$where = array('id_ibu' => $id);
 			$this->db->select('*');
             $this->db->from('ibu_hamil');
             $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu');
@@ -33,7 +32,6 @@
 
 		function tampil_bidan($id){ 
 			$user = $this->session->userdata('id_user');
-			//$where = array('id_ibu' => $id);
 			$this->db->select('*');
             $this->db->from('tb_periksa_ibu');
             $this->db->join('bidan','tb_periksa_ibu.id_bidan=bidan.id_bidan');

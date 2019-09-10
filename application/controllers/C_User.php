@@ -21,7 +21,7 @@ class C_User extends CI_Controller{
 			$this->load->view('bidan/beranda');
 			$this->load->view('bidan/template/footer');
 		}else{
-			$this->load->view('login');
+			exit();
 		}
 	}
 

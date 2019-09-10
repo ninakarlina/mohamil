@@ -43,6 +43,10 @@
                   <label for="password">Password</label>
                   <input type="text" class="form-control" name="password" placeholder="Password" required="" value="<?php echo $bu->password; ?>">
                 </div>
+                    <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="" value="<?php echo $bu->email; ?>">
+                </div>
                 <div class="form-group">        
                   <input type="text" name="level" required="" value="ibu" hidden="">
                 </div>
@@ -174,7 +178,7 @@
                    <input type="text" name="htp" id="demo" class="form-control" value="<?php echo $b->htp; ?>" readonly=" ">
                 </div>
                 <div class="form-group">
-                  <label for="lila">Lila</label>
+                  <label for="lila">Lingkar Lengan Atas</label>
                   <input type="text" class="form-control" name="lila" id="lila" value="<?php echo $b->lila; ?>" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">

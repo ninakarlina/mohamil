@@ -27,13 +27,14 @@
 			<img src="<?php echo base_url().'gambar/artikel.jpg';?>"style="width:50%">
 			<?php
 		}else{?>
-		<img class="img-thumbnail rounded img-responsive float-left" style="max-height: 200px;" src="<?php echo base_url().'gambar/'.$row->gambar?>" alt="Lights" >
+		<center><img class="img-thumbnail rounded img-responsive float-left" style="max-height: 200px;" src="<?php echo base_url().'gambar/'.$row->gambar?>" alt="Lights" ></center>
         <?php }?>
 		</p>
+    <div class="container">
 		<h3 class="box-title"><?php echo $row->judul?></span></h3></a>
         <p class="box-title"><?php echo $row->tema?> | <?php echo date('d-m-Y',strtotime($row->tgl));?></span></p>
 		<p class="mb-4"><?php echo $row->isi_artikel; ?></p>
-		
+		</div>
     </div>
   </div>
 
