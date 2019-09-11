@@ -52,6 +52,17 @@
 			$data = $this->db->query("SELECT * FROM bidan bidan, user user WHERE bidan.id_user=user.id_user AND bidan.id_bidan = '$id' order by id_bidan DESC");
 			return $data->result();
 		}
+
+		function edit_bidan2($id){
+			$where = array('id_bidan' => $id);
+			$this->db->select('*');
+            $this->db->from('bidan');
+            $this->db->join('user','bidan.id_user=user.id_user');
+			$this->db->order_by('user.id_user','DESC');
+			$this->db->where($id);
+			$ubah=$this->db->get()->result();
+ 			return $ubah;
+		}
  
 	}
 
