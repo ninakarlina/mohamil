@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Minimal 8 Karakter" required="">
                 </div>
                  <div class="form-group">
                   <label for="email">Email</label>
@@ -170,7 +170,7 @@
                    <input type="text" name="htp" id="demo" class="form-control" readonly=" ">
                 </div>
                 <div class="form-group">
-                  <label for="lila">Lila</label>
+                  <label for="lila">Lingkar Lengan Atas</label>
                   <input type="text" class="form-control" name="lila" id="lila" placeholder="Masukkan Angka" required="" onkeypress="return Angkasaja(event)">
                 </div>
                  <div class="form-group">

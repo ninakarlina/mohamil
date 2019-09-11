@@ -30,7 +30,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href=""><b>Login</b>MoHamil</a>
+    <a href=""><b>Login</b></a>
   </div>
 
   <!-- /.login-logo -->
@@ -73,7 +73,7 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-         <a href="<?=base_url()?>C_forgot">Forgot password?</a>
+         <a href="<?=base_url()?>C_forgot">Lupa Password?</a>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">

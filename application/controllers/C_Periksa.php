@@ -130,14 +130,27 @@ class C_Periksa extends CI_Controller{
 		$user = $this->session->userdata('level');
 		$data['ibu_hamil'] = $this->M_Periksa->tampil_data('ibu_hamil')->result();
 		$id_ibu['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($user)->result();
-	//$user = $this->session->userdata('id_user');
+			//$user = $this->session->userdata('id_user');
 			//$where = array('id_ibu' => $id);
+
 			$this->db->select('*');
             $this->db->from('ibu_hamil');
             $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu','left');
             $this->db->join('catatan_kes_ibu','ibu_hamil.id_ibu=catatan_kes_ibu.id_ibu','left');
+            $this->db->join('bidan','bidan.id_bidan=tb_periksa_ibu.id_bidan','left');
             $this->db->where('ibu_hamil.id_ibu',$id);
+
             $query = $this->db->get()->result();
+            $this->db->select('*');
+            $this->db->from('ibu_hamil');
+            $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu','left');
+            $this->db->join('catatan_kes_ibu','ibu_hamil.id_ibu=catatan_kes_ibu.id_ibu','left');
+            $this->db->join('bidan','bidan.id_bidan=tb_periksa_ibu.id_bidan','left');
+            $this->db->group_by('nama_ibu');
+            $this->db->where('ibu_hamil.id_ibu',$id);
+
+            $quer = $this->db->get()->result();
+
 			$this->db->select('*');
             $this->db->from('ibu_hamil');
 			$this->db->where('id_ibu',$id);
@@ -159,6 +172,7 @@ class C_Periksa extends CI_Controller{
 			$dataeee = json_encode($check2);
 			$data=array(
 			"title"=>'tampil_admin',
+			"quer"=>$quer,
 			"all"=>$query,
 			"data"=>$datae,
 			"darah"=>$dataee,

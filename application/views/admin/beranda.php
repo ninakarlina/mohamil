@@ -7,12 +7,14 @@
     <!-- Content Header (Page header) -->
      <section class="content-header">
       <h1>
-        Selamat Datang Admin
+        Selamat Datang Admin 
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
        
       </ol>
+
+      
     <section class="content">
       <!-- Info boxes -->
       <div class="row">
