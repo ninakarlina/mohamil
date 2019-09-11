@@ -22,7 +22,7 @@ class C_Data_user extends CI_Controller{
 			$this->load->view('bidan/data_user/list_user', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
 	}
@@ -40,7 +40,7 @@ class C_Data_user extends CI_Controller{
 			$this->load->view('bidan/data_user/add_user');
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
 

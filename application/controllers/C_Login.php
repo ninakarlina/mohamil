@@ -18,7 +18,9 @@ class C_Login extends CI_Controller{
 
      public function proses_login(){
         $postData = $this->input->post();
+        $postData['password'] = md5($postData['password']);
         $validate = $this->M_Login->validate_login($postData);
+        // print_r($postData);
         if ($validate == "username"){
             $this->session->set_flashdata('gagal', ' username anda salah');
         }
@@ -32,6 +34,7 @@ class C_Login extends CI_Controller{
               'id_user'  => $validate[0]->id_user,
               'logged_in' => TRUE,
             );
+            
             $this->session->set_userdata($newdata);
             if ($validate[0]->level=="admin") {
                 redirect(base_url("C_User")); 

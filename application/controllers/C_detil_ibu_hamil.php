@@ -43,7 +43,7 @@ class C_detil_ibu_hamil extends CI_Controller{
 			$this->load->view('bidan/data_ibu/detail_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
   }
 
@@ -61,7 +61,7 @@ class C_detil_ibu_hamil extends CI_Controller{
 			$this->load->view('bidan/data_ibu/add_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
   }

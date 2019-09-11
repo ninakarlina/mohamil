@@ -36,7 +36,11 @@
                <!-- /.col -->
         <div class="col-md-6">
               <!-- DIRECT CHAT -->
+              <?php if($posisi == "in"){ ?>
               <div class="box box-primary direct-chat direct-chat-primary">
+              <?php }else { ?>
+              <div class="box box-primary direct-chat direct-chat-primary direct-chat-contacts-open">
+              <?php }?>
                 <div class="box-header with-border">
                   <h3 class="box-title">Chat Konsultasi</h3>
 
@@ -64,7 +68,7 @@
                   <!-- Contacts are loaded here -->
                  <div class="direct-chat-contacts">
                     <ul class="contacts-list">
-                    <?php  foreach($x as $row2): ?>
+                    <?php $i = 0;  foreach($x as $row2): ?>
             <li>
                         <a href="<?php echo base_url();?>C_user/percakapan/<?php echo $row2->id_user; ?>">
                           <img class="contacts-list-img" src="<?php echo base_url();?>assets/dist/img/user2-128x128.jpg">
@@ -72,12 +76,13 @@
                             <span class="contacts-list-name">
                               <?php echo $row2->nama_ibu; ?>
                               <small class="contacts-list-date pull-right"><?php echo $row2->tgl_lahir_ibu; ?></small>
+                              <span class="contacts-list-msg"><?php if(isset($unread)){print_r(count($unread[$i])); }?></span>
                             </span>
                             <span class="contacts-list-msg"><?php echo $row2->no_tlp; ?></span>
                           </div><!-- /.contacts-list-info -->
                         </a>
                       </li><!-- End Contact Item -->
-                    <?php endforeach; ?>
+                    <?php $i++; endforeach; ?>
                     </ul><!-- /.contatcts-list -->
                   </div>
                   <!-- /.direct-chat-pane -->
@@ -98,30 +103,32 @@
               <!--/.direct-chat -->
             </div>
               </div>
+      <?php if($posisi == "in"){ ?>
         <script type="text/javascript">// <![CDATA[
-$(document).ready(function() {
-$.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
-setInterval(function() {
-$('#results').load('<?php echo base_url('C_user/chat');?>');
-}, 1000); // the "3000" here refers to the time to refresh the div. it is in milliseconds.
-});
-// ]]></script>
-<script>
-$(document).ready(function(){
-  $("#submit").click(function(){
-    $.ajax({
-      url:"<?php echo base_url();?>C_user/add",
-      type: "POST",
-      data:$("#form_chat").serialize(),
-      success: function(data){
-        
-      }
-    });
-    document.getElementById('pesan').value = '';
-    return false;
-  });
-});
-</script>
+            $(document).ready(function() {
+            $.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
+            setInterval(function() {
+            $('#results').load('<?php echo base_url('C_user/chat');?>');
+            }, 1000); // the "3000" here refers to the time to refresh the div. it is in milliseconds.
+            });
+        </script>
+        <?php }else{} ?>
+        <script>
+        $(document).ready(function(){
+          $("#submit").click(function(){
+            $.ajax({
+              url:"<?php echo base_url();?>C_user/add",
+              type: "POST",
+              data:$("#form_chat").serialize(),
+              success: function(data){
+                
+              }
+            });
+            document.getElementById('pesan').value = '';
+            return false;
+          });
+        });
+        </script>
               <!-- /.row -->
             </div>
             <!-- ./box-body -->

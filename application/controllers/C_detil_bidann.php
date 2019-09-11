@@ -28,7 +28,7 @@ class C_detil_bidann extends CI_Controller{
    $data = array(
     				'id_user'		  		=> '',
 					'username'      		=> $this->input->post('username'),
-					'password'    			=> $this->input->post('password'),
+					'password'    			=> md5($this->input->post('password')),
 					'email'       	  		=> $this->input->post('email'),
 					'level'       	  		=> $this->input->post('level'),
 					
@@ -79,7 +79,7 @@ class C_detil_bidann extends CI_Controller{
     
     $data = array(
 					'username'      		=> $this->input->post('username'),
-					'password'    			=> $this->input->post('password'),
+					'password'    			=> md5($this->input->post('password')),
 					'email'       	  		=> $this->input->post('email'),
 					'level'       	  		=> $this->input->post('level'),
 					
