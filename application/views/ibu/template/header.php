@@ -158,6 +158,7 @@
          <li>
           <a href="<?php echo site_url('Chat');?>">
             <i class="fa fa-wechat"></i> <span>Chat Konsultasi</span>
+            <i id="unread" class="btn btn-danger"></i> 
           </a>
         </li>
 
@@ -179,3 +180,11 @@
   
 </section> 
 
+<script type="text/javascript">// <![CDATA[
+  $(document).ready(function() {
+     $.ajaxSetup({ cache: false }); // This part addresses an IE bug. without it, IE will only load the first number and will never refresh
+     setInterval(function() {
+       $('#unread').load('<?php echo base_url('Chat/hitung');?>');
+     }, 1000); // the "3000" here refers to the time to refresh the div. it is in milliseconds.
+   });
+        </script>

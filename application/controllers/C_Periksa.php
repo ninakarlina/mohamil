@@ -23,7 +23,7 @@ class C_Periksa extends CI_Controller{
 			$this->load->view('bidan/periksa_ibu/list_periksa', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
 	}
@@ -43,7 +43,7 @@ class C_Periksa extends CI_Controller{
 			$this->load->view('bidan/data_ibu/list_ibu_hamil', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
   }
@@ -66,7 +66,7 @@ class C_Periksa extends CI_Controller{
 			$this->load->view('bidan/data_ibu/daftar_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
   }

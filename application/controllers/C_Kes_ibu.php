@@ -23,7 +23,7 @@ class C_Kes_ibu extends CI_Controller{
 			$this->load->view('bidan/kesehatan_ibu/list_kes_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
 	}

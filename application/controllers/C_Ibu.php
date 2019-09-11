@@ -124,8 +124,8 @@ class C_Ibu extends CI_Controller{
 				"id_kirim"=>$this->session->userdata('id_user'),
 				"pesan"=>$_POST['message'],
 				"waktu"=>date('Y-m-d H:i:s'),
-				"read_bidan"=>'Sudah',
-				"read_ibu"=>'Belum',
+				// "read_bidan"=>'Sudah',
+				"read_ibu"=>'Sudah',
 			);
 			$this->db->insert('detail_percakapan',$dataer);
 			//$this->session->unset_userdata('id_chat');
@@ -141,8 +141,8 @@ class C_Ibu extends CI_Controller{
 				"id_kirim"=>$this->session->userdata('id_user'),
 				"pesan"=>$_POST['message'],
 				"waktu"=>date('Y-m-d H:i:s'),
-				"read_bidan"=>'Sudah',
-				"read_ibu"=>'Belum',
+				// "read_bidan"=>'Sudah',
+				"read_ibu"=>'Sudah',
 			);
 			$this->db->insert('detail_percakapan',$dataer);
 		endforeach;
@@ -158,13 +158,13 @@ class C_Ibu extends CI_Controller{
 		$bidan=$this->db->get()->result();		//
 		    									//
 		$data_bidan=array(						//
-			"list_bidan"=>$bidan,				//
+			"list_bidan"=>$bidan,
+			"posisi"=>"in",				//
 		);										// Sampe sini
-
 		if ($data == 'ibu') {
 			$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
 			$this->load->view('ibu/template/header', $id);
-			$this->load->view('ibu/chat_konsul',$data_bidan, $id); // nambahin data yang dikirim ke konten chat_konsul
+			$this->load->view('ibu/chat_konsul',$data_bidan); // nambahin data yang dikirim ke konten chat_konsul
 			$this->load->view('ibu/template/footer');
 		}else{
 			$this->load->view('login');
@@ -176,16 +176,18 @@ class C_Ibu extends CI_Controller{
 		$newdata = array(
               'id_userchat'  => $id,
             );
+
         $this->session->set_userdata($newdata);
 		$session= $this->session->userdata('id_user');
 		$this->db->select('*');
 		$this->db->from('percakapan');
 		$this->db->where(array('id_bidan'=> $id, 'id_ibu'=> $session));
 		$query=$this->db->get();
+
       if ($query->num_rows() == 0){
 		
 	  }else{
-		  $this->db->select('*');
+		$this->db->select('*');
 		$this->db->from('percakapan');
 		$this->db->where(array('id_bidan'=> $id, 'id_ibu'=> $session));
 		$query=$this->db->get()->result();
@@ -193,7 +195,7 @@ class C_Ibu extends CI_Controller{
 		 // print_r($arr);
 		foreach($arr as $data):	
 		$dataer=array(
-				"read_bidan"=>'Sudah',
+				"read_ibu"=>'Sudah',
 			);
 		 
 		$this->db->where('id_pesan', $data->id_pesan);
@@ -206,27 +208,27 @@ class C_Ibu extends CI_Controller{
 	{
 		$session= $this->session->userdata('id_user'); //id user ibu
 		$id= $this->session->userdata('id_userchat'); //id bidan
-		// $get = $this->m_produk->get_data('users',array('user_id' =>$session));
 		$this->db->select('*');
 		$this->db->from('detail_percakapan');
 		$this->db->join('percakapan', 'detail_percakapan.id_pesan = percakapan.id_pesan');
 		$this->db->join('bidan', 'percakapan.id_bidan = bidan.id_bidan');
 		$this->db->join('ibu_hamil', 'percakapan.id_ibu = ibu_hamil.id_user');
 		$this->db->where(array('percakapan.id_bidan'=> $id, 'percakapan.id_ibu'=> $session));
-		//$this->db->where();
-		//$this->db->order_by('users.user_id','Desc');
+		
 		$user=$this->db->get()->result();
 		$data=array(
 			"all"=>$user,
 		);
+
 		$this->db->select('*');
 		$this->db->from('percakapan');
 		$this->db->where(array('id_bidan'=> $id, 'id_ibu'=> $session));
+
 		$query=$this->db->get()->result();
 		 $arr=$query;
 		foreach($arr as $datae):	
 		$dataer=array(
-				"read_bidan"=>'Sudah',
+				"read_ibu"=>'Sudah',
 			);
 		 
 		$this->db->where('id_pesan', $datae->id_pesan);

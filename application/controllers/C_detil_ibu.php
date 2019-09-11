@@ -25,7 +25,7 @@ class C_detil_ibu extends CI_Controller{
 			$this->load->view('ibu/data_ibu/list_ibu', $data);
 			$this->load->view('ibu/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		} 
 
 	}
@@ -47,7 +47,7 @@ class C_detil_ibu extends CI_Controller{
 			$this->load->view('bidan/data_ibu/detail_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
   }
 
@@ -65,7 +65,7 @@ class C_detil_ibu extends CI_Controller{
 			$this->load->view('bidan/data_ibu/add_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
 
   }
@@ -75,7 +75,7 @@ public function insert(){
    	  $data = array(
     				'id_user'		  		=> '',
 					'username'      		=> $this->input->post('username'),
-					'password'    			=> $this->input->post('password'),
+					'password'    			=> md5($this->input->post('password')),
 					'email'					=> $this->input->post('password'),
 					'level'       	  		=> $this->input->post('level'),
 					
@@ -152,7 +152,7 @@ public function insert(){
 			$this->load->view('bidan/data_ibu/edit_ibu', $data);
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
   }
     	
@@ -189,7 +189,7 @@ public function insert(){
 	
 	$datas = array(
 				    'username'							=> $this->input->post('username'),
-				    'password'							=> $this->input->post('password'),
+				    'password'							=> md5($this->input->post('password')),
 				    'email'								=> $this->input->post('email'),
 
 	);

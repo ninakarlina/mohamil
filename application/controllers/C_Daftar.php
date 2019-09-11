@@ -49,7 +49,7 @@ class C_Daftar extends CI_Controller{
 			$this->load->view('bidan/data_user/add_user');
 			$this->load->view('bidan/template/footer');
 		}else{
-			exit();
+			$this->load->view('login');
 		}
   }
   
