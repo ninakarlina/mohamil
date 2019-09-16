@@ -1,0 +1,36 @@
+<html>
+<head>
+<!-- Load Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<!-- Load Jquery UI-->
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+
+<style>
+.ui-autocomplete { 
+cursor:pointer; 
+height:110px; 
+overflow-y:scroll;
+}
+</style>
+<script>
+$(document).ready(function() {
+	var Negara = ['ARGENTINA', 'AUSTRALIA', 'BRAZIL', 'BELARUS', 'BHUTAN', 'CHILE', 'CAMBODIA', 'CANADA', 'CHINA', 'DENMARK', 'INDONESIA'];
+	$('#negara').autocomplete({
+		source: Negara,
+		minLength: 0,
+		scroll: true
+	}).focus(function() {
+		$(this).autocomplete("search", this.value);
+	});
+});
+</script>	
+</head>
+
+<body style="font-size:60%;">
+<div style="font:12px">
+Type Country : 
+<input type="text" id="negara" />
+</div>
+</body>

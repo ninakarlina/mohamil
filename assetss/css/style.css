@@ -189,3 +189,15 @@ body {
     font-size: 15px;
     line-height: 1.42857;
 }
+
+.autocomplete-items {
+    background: #e3dede;
+    border-radius: 0px 0px 6px 8px;
+    padding: 10px;
+}
+
+#myInputautocomplete-list{
+    background: #e3dede;
+    border-radius: 0px 0px 6px 8px;
+    padding: 10px;   
+}

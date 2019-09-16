@@ -1,3 +1,42 @@
+<?php foreach ($hpht as $tanggal) {
+  
+    $date1 = new DateTime($tanggal->hpht);
+    $date2 = new DateTime("now");
+    $interval = $date1->diff($date2);
+    // print_r($interval->days % 7);
+
+    // echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days "; 
+
+    // echo "difference " . $interval->days . " days ";
+
+
+}
+
+$dt1 = $tanggal->hpht;
+$dt2 = date("Y-m-d");
+
+$weeks = week_between_two_dates($dt1, $dt2);
+
+if($weeks <= 12){
+  $tanggal_kembali = date('Y-m-d', strtotime('+1 month'));
+}
+elseif($weeks <= 28){
+  $tanggal_kembali = date('Y-m-d', strtotime('+2 week'));
+}
+elseif($weeks <= 40){
+  $tanggal_kembali = date('Y-m-d', strtotime('+1 week'));
+}
+// print_r($tanggal_kembali);
+
+function week_between_two_dates($date1, $date2)
+  {
+      $first = DateTime::createFromFormat('Y-m-d', $date1);
+      $second = DateTime::createFromFormat('Y-m-d', $date2);
+      if($date1 > $date2) return week_between_two_dates($date2, $date1);
+      return floor($first->diff($second)->days/7);
+  }
+?>
+
  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
      <section class="content-header">
@@ -208,7 +247,7 @@
                 </div>
                 <div class="form-group">
                   <label for="umur_kehamilan">Masukkan Usia Kehamilan (Minggu)</label>
-                  <input type="text" class="form-control" name="umur_kehamilan" id="umur_kehamilan" placeholder="Masukkan Berapa Minggu Usia Kehamilan" required="" onkeypress="return Angkasaja(event)">
+                  <input type="text" class="form-control" name="umur_kehamilan" id="umur_kehamilan" value="<?php echo $weeks." Minggu, ".$interval->days % 7 ." Hari ";  ?>" required="" disabled="">
                 </div>
                <div class="form-group">
                 <label>Letak Janin</label>
@@ -265,7 +304,7 @@
                 </div>
                  <div class="form-group">
                   <label for="tgl_kembali">Tanggal Kembali</label>
-                  <input type="date" class="form-control" name="tgl_kembali" id="tgl_kembali" placeholder="" required="">
+                  <input type="text" class="form-control" name="tgl_kembali" id="tgl_kembali" required="" disabled="" value="<?= $tanggal_kembali; ?>">
                 </div>
                  <div class="form-group">
                   <input type="hidden" class="form-control" name="id_bidan" id="id_bidan" placeholder="" required="">

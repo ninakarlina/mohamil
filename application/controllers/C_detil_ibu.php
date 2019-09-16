@@ -55,11 +55,21 @@ class C_detil_ibu extends CI_Controller{
 	
 		$user = $this->session->userdata('level');
 		$data['kode'] = $this->M_Ibu->buat_kode();
+		$data['pekerjaan'] = $this->M_Ibu->pekerjaan_ibu();
+
+		// print_r($data['pekerjaan']);
+
+		// $date1 = new DateTime("2019-09-10");
+		// $date2 = new DateTime("now");
+		// $interval = $date1->diff($date2);
+		// echo "difference " . $interval->y . " years, " . $interval->m." months, ".$interval->d." days "; 
+
+		// echo "difference " . $interval->days . " days ";
 
 		if ($user == 'admin') {
 			$this->load->view('admin/template/header');
 			$this->load->view('admin/data_ibu/add_ibu', $data);
-			$this->load->view('admin/template/footer');
+			$this->load->view('admin/template/footer', $data);
 		}elseif ($user == 'bidan') {
 			$this->load->view('bidan/template/header');
 			$this->load->view('bidan/data_ibu/add_ibu', $data);

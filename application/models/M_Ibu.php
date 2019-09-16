@@ -33,6 +33,16 @@
 			$ubah=$this->db->get()->result();
  			return $ubah;
 		}
+
+		function pekerjaan_ibu(){
+		
+			$this->db->select('pekerjaan_ibu');
+            $this->db->from('ibu_hamil');
+			$this->db->distinct();
+
+			$ubah=$this->db->get()->result();
+ 			return $ubah;
+		}
 		
 		function edit_ibu2($id){
 			$where = array('id_ibu' => $id);

@@ -91,15 +91,8 @@
                   </select>
                 </div>
                <div class="form-group">
-                <label>Pekerjaan</label>
-                  <select class="form-control select2" style="width: 100%;" name="pekerjaan_ibu">
-                            <option value="null">-- Pilih Pekerjaan Ibu --</option>
-                            <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
-                            <option value="Pedagang">Pedagang</option>
-                            <option value="Petani">Petani</option>
-                            <option value="Nelayan">Nelayan</option>
-                            <option value="Guru">Guru</option>
-                  </select>
+                  <label>Pekerjaan</label>
+                  <input type="text" class="form-control" name="pekerjaan_ibu" id="myInput" placeholder="Masukkan Pekerjaan Ibu" required="">
                 </div>
               <!-- /.box-body --> 
             </div>

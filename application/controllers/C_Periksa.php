@@ -93,24 +93,35 @@ class C_Periksa extends CI_Controller{
             $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu');
             $this->db->where('ibu_hamil.id_ibu',$id);
             $query = $this->db->get()->result();
+
 			$this->db->select('*');
             $this->db->from('ibu_hamil');
 			$this->db->where('id_ibu',$id);
             $querye = $this->db->get()->result();
+
 			$this->db->select('tgl_periksa,berat_badan');    
 			$this->db->from('tb_periksa_ibu');
 			$this->db->where('id_ibu',$id);
 			$check=$this->db->get()->result();
+
 			$datae = json_encode($check);
+
 			$this->db->select('tgl_periksa,tinggi_fundus');    
 			$this->db->from('tb_periksa_ibu');
 			$this->db->where('id_ibu',$id);
 			$check1=$this->db->get()->result();
+
+			$this->db->select('hpht');    
+			$this->db->from('catatan_kes_ibu');
+			$this->db->where('id_ibu',$id);
+			$hpht=$this->db->get()->result();
+
 			$dataee = json_encode($check1);
 			$this->db->select('tgl_periksa,denyut_jantung_bayi');    
 			$this->db->from('tb_periksa_ibu');
 			$this->db->where('id_ibu',$id);
 			$check2=$this->db->get()->result();
+
 			$dataeee = json_encode($check2);
 			$data=array(
 				"title"=>'tampil_admin',
@@ -119,6 +130,7 @@ class C_Periksa extends CI_Controller{
 				"darah"=>$dataee,
 				"jantung"=>$dataeee,
 				"alle"=>$querye,
+				"hpht"=>$hpht
 			);
 			$this->load->view('bidan/template/header');
 			$this->load->view('bidan/periksa_ibu/add_periksa', $data);
