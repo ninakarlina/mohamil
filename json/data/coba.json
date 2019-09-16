@@ -1,0 +1,38 @@
+{
+	"menu" : [
+			{
+			"pizza kecil" : {
+				"nama" : "Pizza Kecil",
+				"harga" : 10000,
+				"available" : true
+			},
+			"pizza sedang" : {
+				"nama" : "Pizza Medium",
+				"harga" : 15000,
+				"available" : true	
+			},
+			"pizza besar" : {
+				"nama" : "Pizza Jumbo",
+				"harga" : 25000,
+				"available" : false
+			}
+		},
+		{
+			"nasi bungkus kecil" : {
+				"nama" : "Nasi Bungkus Kecil",
+				"harga" : 5000,
+				"available" : false
+			},
+			"nasi bungkus sedang" : {
+				"nama" : "Nasi Bungkus Medium",
+				"harga" : 10000,
+				"available" : true	
+			},
+			"nasi bungkus besar" : {
+				"nama" : "Nasi Bungkus Jumbo",
+				"harga" : 15000,
+				"available" : true
+			}
+		}
+	]
+}

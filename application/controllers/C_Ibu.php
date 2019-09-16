@@ -8,18 +8,23 @@ class C_Ibu extends CI_Controller{
 	}
 	function index(){
 		$data = $this->session->userdata('level');
-		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
-		$this->db->select('*');    
-	    $this->db->from('bidan');
-	    $hj=$this->db->get()->result();
-		
-		$data2=array(
-			"x"=>$hj,
-		);
-		
-			$this->load->view('ibu/template/header', $id);
-			$this->load->view('ibu/beranda',$data2);
-			$this->load->view('ibu/template/footer');
+
+		if (!$data) {
+			$this->load->view('login');
+		}else{
+			$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
+			$this->db->select('*');    
+		    $this->db->from('bidan');
+		    $hj=$this->db->get()->result();
+			
+			$data2=array(
+				"x"=>$hj,
+			);
+			
+				$this->load->view('ibu/template/header', $id);
+				$this->load->view('ibu/beranda',$data2);
+				$this->load->view('ibu/template/footer');
+		}
 	}
 	
 	public function pesan(){
@@ -53,37 +58,45 @@ class C_Ibu extends CI_Controller{
 	}
 	public function artikel(){
 		$data = $this->session->userdata('level');
-		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
-	
-		$data = $this->session->userdata('level');
-		$this->db->select('*');    
-		$this->db->from('artikel');
-		$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
-		$hj=$this->db->get()->result();
-		$data2=array(
-			"x"=>$hj,
-		);
+		if (!$data) {
+			$this->load->view('login');
+		}else{
+			$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
 		
-			$this->load->view('ibu/template/header',$id);
-			$this->load->view('ibu/artikel',$data2);
-			$this->load->view('ibu/template/footer');
+			$data = $this->session->userdata('level');
+			$this->db->select('*');    
+			$this->db->from('artikel');
+			$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
+			$hj=$this->db->get()->result();
+			$data2=array(
+				"x"=>$hj,
+			);
+			
+				$this->load->view('ibu/template/header',$id);
+				$this->load->view('ibu/artikel',$data2);
+				$this->load->view('ibu/template/footer');
+		}
 	}
 	public function kia(){
 		$data = $this->session->userdata('level');
-		$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
-	
-		$data = $this->session->userdata('level');
-		$this->db->select('*');    
-		$this->db->from('artikel');
-		$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
-		$hj=$this->db->get()->result();
-		$data2=array(
-			"x"=>$hj,
-		);
+		if (!$data) {
+			$this->load->view('login');
+		}else{
+			$id['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($data)->result();
 		
-			$this->load->view('ibu/template/header',$id);
-			$this->load->view('ibu/KIA',$data2);
-			$this->load->view('ibu/template/footer');
+			$data = $this->session->userdata('level');
+			$this->db->select('*');    
+			$this->db->from('artikel');
+			$this->db->join('tema', 'artikel.id_tema = tema.id_tema');
+			$hj=$this->db->get()->result();
+			$data2=array(
+				"x"=>$hj,
+			);
+			
+				$this->load->view('ibu/template/header',$id);
+				$this->load->view('ibu/KIA',$data2);
+				$this->load->view('ibu/template/footer');
+		}
 	}
 	public function view($ide){
 		$data = $this->session->userdata('level');
@@ -207,6 +220,7 @@ class C_Ibu extends CI_Controller{
 	public function chat()
 	{
 		$session= $this->session->userdata('id_user'); //id user ibu
+
 		$id= $this->session->userdata('id_userchat'); //id bidan
 		$this->db->select('*');
 		$this->db->from('detail_percakapan');

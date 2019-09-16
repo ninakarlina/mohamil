@@ -9,21 +9,26 @@ class C_detil_ibu_hamil extends CI_Controller{
 	}
 	function index(){
 
-		$user = $this->session->userdata('level');
-		$id = $this->session->userdata('id_user');
-		$data['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($user)->result();
-		$data['ibu_hamil'] = $this->M_Ibu->tampil_ibu_hamil($id)->result();
-		$id_ibu = $data['ibu_hamil'][0]->id_ibu;
-		$where = array('id_ibu' => $id_ibu);
-		$data['ibu'] = $this->M_Ibu->edit_ibu($id);
-		$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
-		// print_r($where);
-		$data['kode'] = $this->M_Ibu->buat_kode();
+		$data = $this->session->userdata('level');
+		if (!$data) {
+			$this->load->view('login');
+		}else{
 
-		$this->load->view('ibu/template/header', $data);
-		$this->load->view('ibu/data_ibu/detail_ibu', $data);
-		$this->load->view('ibu/template/footer');
-	
+			$user = $this->session->userdata('level');
+			$id = $this->session->userdata('id_user');
+			$data['tb_periksa_ibu'] = $this->M_Ibu->tampil_periksa($user)->result();
+			$data['ibu_hamil'] = $this->M_Ibu->tampil_ibu_hamil($id)->result();
+			$id_ibu = $data['ibu_hamil'][0]->id_ibu;
+			$where = array('id_ibu' => $id_ibu);
+			$data['ibu'] = $this->M_Ibu->edit_ibu($id);
+			$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
+			// print_r($where);
+			$data['kode'] = $this->M_Ibu->buat_kode();
+
+			$this->load->view('ibu/template/header', $data);
+			$this->load->view('ibu/data_ibu/detail_ibu', $data);
+			$this->load->view('ibu/template/footer');
+		}
 	}
 	
 	function read($id_ibu){ 	
@@ -133,16 +138,21 @@ public function insert(){
   
   function form_update($id_ibu){ 	
 	
-	$where = array('id_ibu' => $id_ibu);
-	$data['kode'] = $this->M_Ibu->buat_kode();
-	$data['ibu_hamil'] = $this->M_Ibu->edit_ibu($where);
-	$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
-    $user = $this->session->userdata('level');
 
-		
-	$this->load->view('ibu/template/header');
-	$this->load->view('bidan/data_ibu/edit_ibu', $data);
-	$this->load->view('bidan/template/footer');
+	$data = $this->session->userdata('level');
+		if (!$data) {
+			$this->load->view('login');
+		}else{
+
+			$where = array('id_ibu' => $id_ibu);
+			$data['kode'] = $this->M_Ibu->buat_kode();
+			$data['ibu_hamil'] = $this->M_Ibu->edit_ibu($where);
+			$data['catatan_kes_ibu'] = $this->M_Ibu->edit_ibu2($where);
+				
+			$this->load->view('ibu/template/header');
+			$this->load->view('bidan/data_ibu/edit_ibu', $data);
+			$this->load->view('bidan/template/footer');
+		}
 		
   }
     	
