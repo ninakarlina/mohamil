@@ -63,7 +63,7 @@
                       foreach ($ibu_hamil as $bu)
                       {
                     ?>
-                    <option><?php echo $bu->nama_ibu; ?></option>
+                    <option value="<?=$bu->nama_ibu ?>"><?php echo $bu->kode_ibu;?>&nbsp&nbsp&nbsp<?php echo $bu->nama_ibu; ?></option>
                     <?php
                       }
                     ?>
@@ -79,6 +79,7 @@
                 <thead>
                 <tr>
                   <th>No</th>
+                  <th>Kode Ibu</th>
                   <th>Nama</th>
                   <th>Tanggal Lahir</th>
                   <th>Alamat Rumah</th>
@@ -98,6 +99,7 @@
         ?>
          <tr>
             <td width="50px"><?php echo $no++ ?></td>
+            <td><?php echo $list->kode_ibu; ?></td>
             <td><?php echo $list->nama_ibu; ?></td>
             <td><?php echo $list->tgl_lahir_ibu; ?></td>
             <td><?php echo $list->alamat_rumah; ?></td>

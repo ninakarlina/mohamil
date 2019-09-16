@@ -39,13 +39,12 @@
               <input type="text" class="form-control" name="username"  value="<?php echo $bi->username; ?>" placeholder="Username">
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
-              <input type="text" class="form-control" name="password"  value="<?php echo $bi->password; ?>"  placeholder="No HP">
-            </div>
-            <div class="form-group">
               <label for="email">Email</label>
               <input type="text" class="form-control" name="email"  value="<?php echo $bi->email; ?>" placeholder="Email">
             </div>
+            <div class="form-group">        
+                  <input type="text" name="level" required="" value="bidan" hidden="">
+                </div>
             <div class="form-group">
               <label for="alamat_bidan">Alamat Bidan</label>
               <input type="text" class="form-control" name="alamat_bidan"  value="<?php echo $bi->alamat_bidan; ?>" placeholder="Alamat Bidan">

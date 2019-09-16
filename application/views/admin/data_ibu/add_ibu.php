@@ -61,7 +61,7 @@
                 <div class="form-group">        
                   <label>Agama</label>
                   <select class="form-control" name="agama_ibu">
-                            <option disabled diselected>-- Pilih Agama  --</option>
+                            <option value="null">-- Pilih Agama  --</option>
                             <option value="Islam">Islam</option>
                             <option value="Khatolik">Khatolik</option>
                             <option value="Protestan">Protestan</option>
@@ -70,22 +70,36 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="pendidikan_ibu">Pendidikan</label>
-                  <input type="text" class="form-control" name="pendidikan_ibu" id="pendidikan_ibu" placeholder="Masukkan Pendidikan Terakhir" required="">
+                <label>Pendidikan</label>
+                  <select class="form-control" name="pendidikan_ibu">
+                            <option value="null">-- Pilih Pendidikan Ibu --</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                            <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                            <option value="-">-</option>
+                  </select>
                 </div>
                 <div class="form-group">
                 <label>Golongan Darah</label>
                   <select class="form-control" name="goldar_ibu">
-                            <option disabled diselected>-- Pilih Golongan Darah --</option>
+                            <option value="null">-- Pilih Golongan Darah --</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
                             <option value="O">O</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="pekerjaan_ibu">Pekerjaan</label>
-                  <input type="text" class="form-control" name="pekerjaan_ibu" id="pekerjaan_ibu" placeholder="Masukkan Pekerjaan Ibu" required="">
+               <div class="form-group">
+                <label>Pekerjaan</label>
+                  <select class="form-control select2" style="width: 100%;" name="pekerjaan_ibu">
+                            <option value="null">-- Pilih Pekerjaan Ibu --</option>
+                            <option value="Ibu Rumah Tangga">Ibu Rumah Tangga</option>
+                            <option value="Pedagang">Pedagang</option>
+                            <option value="Petani">Petani</option>
+                            <option value="Nelayan">Nelayan</option>
+                            <option value="Guru">Guru</option>
+                  </select>
                 </div>
               <!-- /.box-body --> 
             </div>
@@ -108,7 +122,7 @@
                 <div class="form-group">
                  <label>Agama</label>
                   <select class="form-control" name="agama_suami">
-                            <option disabled diselected>-- Pilih Agama  --</option>
+                            <option value="null">-- Pilih Agama  --</option>
                             <option value="Islam">Islam</option>
                             <option value="Khatolik">Khatolik</option>
                             <option value="Protestan">Protestan</option>
@@ -116,14 +130,21 @@
                             <option value="Hindu">Hindu</option>
                           </select>
                 </div>
-                <div class="form-group">
-                  <label for="pendidikan_suami">Pendidikan</label>
-                  <input type="text" class="form-control" name="pendidikan_suami" id="pendidikan_suami" placeholder="Masukkan Pendidikan Terakhir" required="">
+               <div class="form-group">
+                <label>Pendidikan</label>
+                  <select class="form-control" name="pendidikan_suami">
+                            <option value="null">-- Pilih Pendidikan Suami --</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA">SMA</option>
+                            <option value="Perguruan Tinggi">Perguruan Tinggi</option>
+                            <option value="-">-</option>
+                  </select>
                 </div>
                <div class="form-group">
                 <label>Golongan Darah</label>
                  <select class="form-control" name="goldar_suami" > 
-                            <option disabled diselected>-- Pilih Golongan Darah --</option>
+                            <option value="null">-- Pilih Golongan Darah --</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
@@ -131,8 +152,14 @@
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="pekerjaan_suami">Pekerjaan</label>
-                  <input type="text" class="form-control" name="pekerjaan_suami" id="pekerjaan_suami" placeholder="Masukkan Pekerjaan Suami" required="">
+                <label>Pekerjaan</label>
+                  <select class="form-control" name="pekerjaan_suami">
+                            <option value="null">-- Pilih Pekerjaan Suami --</option>
+                            <option value="Pedagang">Pedagang</option>
+                            <option value="Petani">Petani</option>
+                            <option value="Nelayan">Nelayan</option>
+                            <option value="Guru">Guru</option>
+                  </select>
                 </div>
               </div>
               </div>
@@ -178,8 +205,14 @@
                   <input type="text" class="form-control" name="tb" id="tb" placeholder="Masukkan Angka" required="" onkeypress="return Angkasaja(event)">
                 </div>
                 <div class="form-group">
-                  <label for="kontrasepsi_seb_hamil">Kontrasepsi Sebelum Kehamilan</label>
-                  <input type="text" class="form-control" name="kontrasepsi_seb_hamil" id="kontrasepsi_seb_hamil" placeholder="Masukkan Kontrasepsi Sebelum Hamil" required="" >
+                <label>Kontrasepsi Sebelum Kehamilan</label>
+                  <select class="form-control" name="Kontrasepsi_seb_hamil">
+                            <option value="null">-- Pilih --</option>
+                            <option value="Pil KB">Pil KB</option>
+                            <option value="KB Suntik">KB Suntik</option>
+                            <option value="IUD">IUD</option>
+                            <option value="Tidak Menggunakan">Tidak Menggunakan</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="riwayat_penyakit">Riwayat Penyakit</label>
@@ -207,19 +240,29 @@
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" placeholder="" required="">
+                  <input type="text" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" placeholder="Masukkan Tahun Jarak Persalinan Terakhir" required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>
                   <input type="text" class="form-control" name="status_imun_akhir" id="status_imun_akhir" placeholder="Masukkan Tahun Imunisasi Terakhir" required="">
                 </div>
                  <div class="form-group">
-                  <label for="penolong_persalinan">Penolong Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="penolong_persalinan" id="penolong_persalinan" placeholder="Masukkan Penolong Persalinan Terakhir" required="">
+                  <label>Penolong Persalinan Terakhir</label>
+                  <select class="form-control" name="penolong_persalinan">
+                            <option value="null">-- Pilih --</option>
+                            <option value="Dokter">Dokter</option>
+                            <option value="Bidan">Bidan</option>
+                            <option value="-">-</option>
+                  </select>
                 </div>
                  <div class="form-group">
                   <label for="cara_persalinan_akhir">Cara Persalinan Terakhir</label>
-                  <input type="text" class="form-control" name="cara_persalinan_akhir" id="cara_persalinan_akhir" placeholder="Masukkan Cara Persalinan Terakhir" required="">
+                  <select class="form-control" name="penolong_persalinan">
+                            <option value="null">-- Pilih --</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Caesar">Caesar</option>
+                            <option value="-">-</option>
+                  </select>
                 </div>
                  <div class="box-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>

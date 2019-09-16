@@ -3,10 +3,10 @@
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h2>
+      <center><h2 style="size: 70px">
         Selamat Datang Bidan Di Aplikasi Monitoring Kehamilan
         
-      </h2>
+      </h2></center>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
