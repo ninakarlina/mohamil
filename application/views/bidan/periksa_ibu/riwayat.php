@@ -121,13 +121,13 @@
       
       <!-- Default box -->
       <div class="box" style="overflow-x: auto">
-         <?php
+        <!--  <?php
           $no = 1;
           foreach ($quer as $bu)
           {
-        ?>
+        ?> -->
         <div class="box-header with-border">
-          <h3 class="box-title">Riwayat Ibu Hamil (<?php echo $bu->nama_ibu?>)</h3>
+          <h3 class="box-title">Riwayat Ibu Hamil<!--  (<?php echo $bu->nama_ibu?>) --></h3>
         </div> 
         <?php } ?>
         <div class="box-body">
@@ -157,7 +157,7 @@
         ?>
           <tr>
             <td width="50px"><?php echo $no++ ?></td>
-            <td><?php echo $bu->nama_bidan; ?></td>
+            <td><?php echo $bu->nama_ibu; ?></td>
             <td><?php echo $bu->tekanan_darah; ?></td>
             <td><?php echo $bu->umur_kehamilan; ?></td>
             <td><?php echo $bu->letak_janin; ?></td>

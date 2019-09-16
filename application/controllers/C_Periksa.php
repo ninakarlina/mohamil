@@ -195,7 +195,7 @@ class C_Periksa extends CI_Controller{
    $user = $this->session->userdata('id_user');
    $ibu= $this->input->post('id_ibu');
    $this->input->post('id_periksa_ibu');
-    $data = array(
+    $data = array( 
     				'id_periksa_ibu'		 	=> $this->input->post('id_periksa_ibu'),
 					'id_ibu'					=> $this->input->post('id_ibu'),
 					'berat_badan'    			=> $this->input->post('berat_badan'),

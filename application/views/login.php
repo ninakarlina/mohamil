@@ -54,9 +54,9 @@
                         echo "<div class='alert alert-primary' role ='alert'>";
                         // echo "<span class='badge badge-pill badge-primary'>Gagal</span>";
                         echo $this->session->flashdata('message');
-                        echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                                <span aria-hidden='true'>&times;</span>
-                              </button>";
+                        // echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                        //         <span aria-hidden='true'>&times;</span>
+                        //       </button>";
                         echo "</div>";
                         echo "</div>";
                     }

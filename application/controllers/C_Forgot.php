@@ -88,7 +88,7 @@ class C_Forgot extends CI_Controller {
                             </button></div>");
           // echo "gsk msuk if";
         }
-          redirect('C_forgot');
+          $this->load->view('login',$data);
     }
 
     public function reset_password($id_user){

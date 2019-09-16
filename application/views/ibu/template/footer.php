@@ -1,7 +1,7 @@
    </div><!-- /.content-wrapper -->
 
       <footer class="main-footer">
-        <strong>Copyright &copy; 2019 - <a href="www.ti.polindra.ac.id">Teknik Informatika-Politeknik Negeri Indramayu</a>.</strong>
+        <strong>2019 - <a href="www.ti.polindra.ac.id">Teknik Informatika-Politeknik Negeri Indramayu</a>.</strong>
       </footer>
     </div><!-- ./wrapper -->
 

@@ -76,7 +76,7 @@ public function insert(){
     				'id_user'		  		=> '',
 					'username'      		=> $this->input->post('username'),
 					'password'    			=> md5($this->input->post('password')),
-					'email'					=> $this->input->post('password'),
+					'email'					=> $this->input->post('email'),
 					'level'       	  		=> $this->input->post('level'),
 					
 				 );
@@ -197,6 +197,7 @@ public function insert(){
 	$where = array('id_user' => $this->input->post('id_user'));
     $this->db->where($where);
 	$this->db->update('user',$datas);
+
 	//$this->M_Ibu->update_ibu($where,$data,'ibu_hamil');
 
 	 $data3 = array(

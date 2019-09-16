@@ -66,8 +66,8 @@ class C_detil_bidann extends CI_Controller{
 
   function form_update($id_bidan){ 	
 	
-	$where = array('id_user' => $id_bidan);
-	$data['bidan'] = $this->M_Bidan->tampil_user($id_bidan)->result();
+	$where = array('id_bidan' => $id_bidan);
+	$data['bidan'] = $this->M_Bidan->edit_bidan2($where);
 	// $data[''] = $this->M_Bidan->tampil_user($id_bidan)->result();
 		
         $this->load->view('admin/template/header');	

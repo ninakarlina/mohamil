@@ -192,7 +192,7 @@
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" disabled required="">
+                  <input type="text" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>

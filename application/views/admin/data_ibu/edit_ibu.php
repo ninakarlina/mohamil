@@ -39,10 +39,6 @@
                   <label for="username">Username</label>
                   <input type="text" class="form-control" name="username" placeholder="Username" required="" value="<?php echo $bu->username; ?>">
                 </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" placeholder="Password" required="" value="<?php echo $bu->password; ?>">
-                </div>
                     <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="" value="<?php echo $bu->email; ?>">
@@ -215,7 +211,7 @@
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
+                  <input type="text" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>

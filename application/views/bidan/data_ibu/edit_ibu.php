@@ -23,7 +23,7 @@
                 <!-- Post -->
                <div class="box-body"> 
           <?php foreach($ibu_hamil as $bu){ ?>
-         <form action="<?php echo base_url()."C_detil_ibu_hamil/update_ibu"; ?>" method="POST">    
+         <form action="<?php echo base_url()."C_detil_ibu/update_ibu"; ?>" method="POST">    
               <div class="box-body">
                 <input type="hidden" class="form-control" name="id_ibu" placeholder="" value="<?php echo $bu->id_ibu; ?>">
                 <input type="hidden" class="form-control" name="id_user" placeholder="" value="<?php echo $bu->id_user; ?>">
@@ -39,13 +39,10 @@
                   <label for="username">Username</label>
                   <input type="text" class="form-control" name="username" placeholder="Username" required="" value="<?php echo $bu->username; ?>">
                 </div>
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="text" class="form-control" name="password" placeholder="Password" required="" value="<?php echo $bu->password; ?>">
                 </div>
-                <div class="form-group">
+                    <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" class="form-control" name="email" placeholder="Email" required="" value="<?php echo $bu->email; ?>">
+                  <input type="email" class="form-control" name="email" placeholder="Masukkan Email" required="" value="<?php echo $bu->email; ?>">
                 </div>
                 <div class="form-group">        
                   <input type="text" name="level" required="" value="ibu" hidden="">
@@ -215,7 +212,7 @@
                 </div>
                  <div class="form-group">
                   <label for="jarak_hamil_persalinan_terakhir">Jarak Hamil Persalinan Terakhir</label>
-                  <input type="date" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
+                  <input type="text" class="form-control" name="jarak_hamil_persalinan_terakhir" id="jarak_hamil_persalinan_terakhir" value="<?php echo $b->jarak_hamil_persalinan_terakhir; ?>" required="">
                 </div>
                  <div class="form-group">
                   <label for="status_imun_akhir">Status Imunisasi TT Terakhir</label>
