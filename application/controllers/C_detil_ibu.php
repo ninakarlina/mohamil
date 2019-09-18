@@ -255,34 +255,55 @@ public function insert(){
 		$this->db->where('id_ibu', $id_ibu);
 		$ibu_hamil= $this->db->get()->result(); 
 
-        $pdf = new FPDF('l','mm','a6');
+        $pdf = new FPDF('P','mm','a5');
         // membuat halaman baru
         $pdf->AddPage();
         // setting jenis font yang akan digunakan
         $pdf->SetFont('Arial','B',16);
         // mencetak string
-        $pdf->Cell(130,7,'Kartu Pemeriksaan Kehamilan',0,1,'C');
+        $pdf->Cell(0,7,'Kartu Pemeriksaan Kehamilan',0,1,'C');
         $pdf->SetFont('Arial','B',12);
-        $pdf->Cell(130,7,'PUSKESMAS LOHBENER',0,1,'C');
+        $pdf->Cell(0,7,'PUSKESMAS LOHBENER',0,1,'C');
+        $pdf->Cell(0,7,'__________________________________________________________',0,1,'C');
+        $pdf->SetFont('Arial','B',16);
         // Memberikan space kebawah agar tidak terlalu rapat
-        $pdf->Cell(10,7,'',0,1);
+        $pdf->Cell(10,10,'',0,1);
         $pdf->SetFont('Arial','B',10);
-        $pdf->Cell(20,6,'Kode Ibu',1,0);
-        $pdf->Cell(32,6,'Nama Ibu',1,0);
-        $pdf->Cell(32,6,'Tempat Lahir Ibu',1,0);
-        $pdf->Cell(32,6,'Tanggal Lahir Ibu',1,0);
-        $pdf->Cell(32,6,'Alamat',1,0);
-        $pdf->Ln();
-        $pdf->SetFont('Arial','',10);
-        
+        // $pdf->Cell(20,6,'Kode Ibu',1,0);
+        // $pdf->Cell(32,6,'Nama Ibu',1,0);
         foreach ($ibu_hamil as $row){
-            $pdf->Cell(20,6,$row->kode_ibu,1,0); 
-            $pdf->Cell(32,6,$row->nama_ibu,1,0);
-            $pdf->Cell(32,6,$row->tempat_lahir_ibu,1,0);
-            $pdf->Cell(32,6,$row->tgl_lahir_ibu,1,0);
-            $pdf->Cell(32,6,$row->alamat_rumah,1,0); 
-            $pdf->Ln();
-        }
+        	// $pdf->SetLeftMargin(20);
+	        $pdf->Cell(32,6,'Kode Ibu',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->kode_ibu,0,2); 
+	        $pdf->Cell(32,6,'Nama Ibu',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->nama_ibu,0,1); 
+	        $pdf->Cell(32,6,'Tempat Lahir Ibu',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->tempat_lahir_ibu,0,1); 
+	        $pdf->Cell(32,6,'Tanggal Lahir Ibu',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->tgl_lahir_ibu,0,1); 
+	        $pdf->Cell(32,6,'Alamat',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->alamat_rumah,0,1); 
+	        $pdf->Ln();
+	        $pdf->SetFont('Arial','',10);
+	    }
+        
+        // foreach ($ibu_hamil as $row){
+        //     $pdf->Cell(20,6,$row->kode_ibu,1,0); 
+        //     $pdf->Ln();
+        //     $pdf->Cell(32,6,$row->nama_ibu,1,0);
+        //     $pdf->Ln();
+        //     $pdf->Cell(32,6,$row->tempat_lahir_ibu,1,0);
+        //     $pdf->Ln();
+        //     $pdf->Cell(32,6,$row->tgl_lahir_ibu,1,0);
+        //     $pdf->Ln();
+        //     $pdf->Cell(32,6,$row->alamat_rumah,1,0); 
+        //     $pdf->Ln();
+        // }
         $pdf->Output();
     }
 
