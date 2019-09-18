@@ -4,7 +4,7 @@ class C_detil_ibu extends CI_Controller{
 		parent:: __construct();
 		$this->load->model('M_Login');
 		$this->load->model('M_Ibu');
-		//$this->load->model('M_Periksa');
+		$this->load->library('pdf');
 		$this->load->helper(array('form', 'url'));
 	}
 	function index(){
@@ -140,7 +140,8 @@ public function insert(){
 					'jarak_hamil_persalinan_terakhir'   => $this->input->post('jarak_hamil_persalinan_terakhir'),
 					'status_imun_akhir'       			=> $this->input->post('status_imun_akhir'),
 					'penolong_persalinan'       		=> $this->input->post('penolong_persalinan'),
-					'cara_persalinan_akhir'      	 	=> $this->input->post('cara_persalinan_akhir'),);
+					'cara_persalinan_akhir'      	 	=> $this->input->post('cara_persalinan_akhir'),
+				);
 	
 	$this->M_Ibu->insert($data3, 'catatan_kes_ibu');
     redirect(base_url() . "C_detil_ibu" ,'refresh');  } 
@@ -246,5 +247,43 @@ public function insert(){
 	
 	redirect(base_url() . "C_detil_ibu" ,'refresh');
   }
+
+  public function cetak($id_ibu){
+
+        $this->db->select('*');    
+		$this->db->from('ibu_hamil');
+		$this->db->where('id_ibu', $id_ibu);
+		$ibu_hamil= $this->db->get()->result(); 
+
+        $pdf = new FPDF('l','mm','a6');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',16);
+        // mencetak string
+        $pdf->Cell(130,7,'Kartu Pemeriksaan Kehamilan',0,1,'C');
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(130,7,'PUSKESMAS LOHBENER',0,1,'C');
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(20,6,'Kode Ibu',1,0);
+        $pdf->Cell(32,6,'Nama Ibu',1,0);
+        $pdf->Cell(32,6,'Tempat Lahir Ibu',1,0);
+        $pdf->Cell(32,6,'Tanggal Lahir Ibu',1,0);
+        $pdf->Cell(32,6,'Alamat',1,0);
+        $pdf->Ln();
+        $pdf->SetFont('Arial','',10);
+        
+        foreach ($ibu_hamil as $row){
+            $pdf->Cell(20,6,$row->kode_ibu,1,0); 
+            $pdf->Cell(32,6,$row->nama_ibu,1,0);
+            $pdf->Cell(32,6,$row->tempat_lahir_ibu,1,0);
+            $pdf->Cell(32,6,$row->tgl_lahir_ibu,1,0);
+            $pdf->Cell(32,6,$row->alamat_rumah,1,0); 
+            $pdf->Ln();
+        }
+        $pdf->Output();
+    }
 
 }

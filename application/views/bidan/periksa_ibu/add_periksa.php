@@ -21,9 +21,9 @@ if($weeks <= 12){
   $tanggal_kembali = date('Y-m-d', strtotime('+1 month'));
 }
 elseif($weeks <= 28){
-  $tanggal_kembali = date('Y-m-d', strtotime('+2 week'));
+  $tanggal_kembali = date('Y-m-d', strtotime('+2 week')); 
 }
-elseif($weeks <= 40){
+elseif($weeks <= 40){ 
   $tanggal_kembali = date('Y-m-d', strtotime('+1 week'));
 }
 // print_r($tanggal_kembali);
@@ -235,7 +235,6 @@ function week_between_two_dates($date1, $date2)
         </div>
         </div>
       
-         
       <div class="col-md-9">
                   <!-- Default box -->
       <div class="box">
@@ -247,7 +246,7 @@ function week_between_two_dates($date1, $date2)
                 </div>
                 <div class="form-group">
                   <label for="umur_kehamilan">Masukkan Usia Kehamilan (Minggu)</label>
-                  <input type="text" class="form-control" name="umur_kehamilan" id="umur_kehamilan" value="<?php echo $weeks." Minggu, ".$interval->days % 7 ." Hari ";  ?>" required="" disabled="">
+                  <input type="text" class="form-control" name="umur_kehamilan" id="umur_kehamilan" value="<?php echo $weeks." Minggu, ".$interval->days % 7 ." Hari ";  ?>" required="" readonly="">
                 </div>
                <div class="form-group">
                 <label>Letak Janin</label>
@@ -304,7 +303,7 @@ function week_between_two_dates($date1, $date2)
                 </div>
                  <div class="form-group">
                   <label for="tgl_kembali">Tanggal Kembali</label>
-                  <input type="text" class="form-control" name="tgl_kembali" id="tgl_kembali" required="" disabled="" value="<?= $tanggal_kembali; ?>">
+                  <input type="text" class="form-control" name="tgl_kembali" id="tgl_kembali" required="" readonly="" value="<?= $tanggal_kembali; ?>">
                 </div>
                  <div class="form-group">
                   <input type="hidden" class="form-control" name="id_bidan" id="id_bidan" placeholder="" required="">

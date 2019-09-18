@@ -63,7 +63,7 @@
             <td>
           <?php
 
-            echo anchor(site_url('C_detil_ibu/read/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Detail</button>'); 
+            echo anchor(site_url('C_detil_ibu/cetak/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Cetak</button>'); 
             echo '&nbsp'; 
             echo anchor(site_url('C_detil_ibu/form_update/'.$bu->id_ibu),'<button type="button" class="btn btn-warning btn-xs">Ubah</button>'); 
             echo '&nbsp';

@@ -92,7 +92,7 @@
                 </div>
                <div class="form-group">
                   <label>Pekerjaan</label>
-                  <input type="text" class="form-control" name="pekerjaan_ibu" id="myInput" placeholder="Masukkan Pekerjaan Ibu" required="">
+                  <input type="text" class="form-control" name="pekerjaan_ibu" id="myInput" placeholder="Masukkan Pekerjaan Ibu" required="" autocomplete="off">
                 </div>
               <!-- /.box-body --> 
             </div>
@@ -197,14 +197,13 @@
                   <label for="tb">Tinggi Badan</label>
                   <input type="text" class="form-control" name="tb" id="tb" placeholder="Masukkan Angka" required="" onkeypress="return Angkasaja(event)">
                 </div>
-                <div class="form-group">
-                <label>Kontrasepsi Sebelum Kehamilan</label>
-                  <select class="form-control" name="Kontrasepsi_seb_hamil">
+                 <div class="form-group">
+                  <label>Kontrasepsi Sebelum Kehamilan</label>
+                  <select class="form-control" name="kontrasepsi_seb_hamil">
                             <option value="null">-- Pilih --</option>
-                            <option value="Pil KB">Pil KB</option>
-                            <option value="KB Suntik">KB Suntik</option>
+                            <option value="KB">KB</option>
                             <option value="IUD">IUD</option>
-                            <option value="Tidak Menggunakan">Tidak Menggunakan</option>
+                            <option value="-">-</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -250,7 +249,7 @@
                 </div>
                  <div class="form-group">
                   <label for="cara_persalinan_akhir">Cara Persalinan Terakhir</label>
-                  <select class="form-control" name="penolong_persalinan">
+                  <select class="form-control" name="cara_persalinan_akhir">
                             <option value="null">-- Pilih --</option>
                             <option value="Normal">Normal</option>
                             <option value="Caesar">Caesar</option>

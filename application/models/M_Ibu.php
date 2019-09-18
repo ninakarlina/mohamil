@@ -202,6 +202,12 @@
 	      return 0;
 	    }
 	}
+
+	public function cetak(){   
+
+		$query = $this->db->get('ibu_hamil');
+        return $query->result_array();
+	}
 	  
 }
 

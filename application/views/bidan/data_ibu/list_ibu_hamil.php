@@ -53,7 +53,9 @@
 
             // echo anchor(site_url('C_periksa/form_add/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Periksa</button>'); 
             echo '&nbsp';
-			echo anchor(site_url('C_periksa/riwayat/'.$bu->id_ibu),'<button type="button" class="btn btn-warning btn-xs">Riwayat</button>'); 
+			      echo anchor(site_url('C_periksa/riwayat/'.$bu->id_ibu),'<button type="button" class="btn btn-warning btn-xs">Riwayat</button>'); 
+            echo '&nbsp';
+            echo anchor(site_url('C_periksa/cetak/'.$bu->id_ibu),'<button type="button" class="btn btn-info btn-xs">Cetak</button>'); 
              
           ?>
           </td>

@@ -156,4 +156,6 @@ class C_Daftar extends CI_Controller{
 		$this->load->view('bidan/template/footer');
 	}
 
+	
+
 }

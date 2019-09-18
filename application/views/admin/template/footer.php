@@ -231,7 +231,7 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing all the country names in the world:*/
-var countries = [<?php foreach ($pekerjaan as $item) {
+var countries = ["Bidan", <?php foreach ($pekerjaan as $item) {
   echo '"' . $item->pekerjaan_ibu . '",';
 } ?>];
 

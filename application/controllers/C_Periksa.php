@@ -6,6 +6,7 @@ class C_Periksa extends CI_Controller{
 		$this->load->model('M_Ibu');
 		$this->load->model('M_Daftar');
 		$this->load->model('M_Periksa');
+		$this->load->library('pdf');
 		// $this->load->model('M_Kes_ibu');
 		$this->load->helper(array('form', 'url'));
 	}
@@ -290,4 +291,65 @@ class C_Periksa extends CI_Controller{
 		$this->load->view('bidan/periksa_ibu/add_periksa', $data);
 		$this->load->view('bidan/template/footer');
 	}
+
+	public function cetak($id){
+
+            $this->db->select('*');    
+			$this->db->from('ibu_hamil');
+			$this->db->where('id_ibu', $id);
+			$ibu_hamil= $this->db->get()->result(); 
+
+            $this->db->select('*');
+            $this->db->from('ibu_hamil');
+            $this->db->join('tb_periksa_ibu','ibu_hamil.id_ibu=tb_periksa_ibu.id_ibu','left');
+            $this->db->join('catatan_kes_ibu','ibu_hamil.id_ibu=catatan_kes_ibu.id_ibu','left');
+            $this->db->join('bidan','bidan.id_bidan=tb_periksa_ibu.id_bidan','left');
+            
+            $this->db->where('ibu_hamil.id_ibu',$id);
+
+            $quer = $this->db->get()->result();
+
+        $pdf = new FPDF('l','mm','a5');
+        // membuat halaman baru
+        $pdf->AddPage();
+        // setting jenis font yang akan digunakan
+        $pdf->SetFont('Arial','B',16);
+        // mencetak string
+        $pdf->Cell(290,7,'Hasil Pemeriksaan Kehamilan Di Puskesmas Lohbener',0,1,'C');
+        foreach ($ibu_hamil as $row){
+        $pdf->SetFont('Arial','B',12);
+        $pdf->Cell(290,7,$row->nama_ibu,0,1,'C');
+	     }
+        
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(23,6,'Berat badan',1,0);
+        $pdf->Cell(32,6,'Usia Kehamilan',1,0);
+        $pdf->Cell(30,6,'Tinggi Fundus',1,0);
+        $pdf->Cell(28,6,'Keluhan',1,0);
+        $pdf->Cell(30,6,'Tekanan Darah',1,0);
+        $pdf->Cell(28,6,'Hasil Lab',1,0);
+        $pdf->Cell(30,6,'Tindakan',1,0);
+        $pdf->Cell(50,6,'Nasehat',1,0);
+        $pdf->Cell(30,6,'Tanggal Periksa',1,0);
+        $pdf->Cell(30,6,'Tanggal Kembali',1,0);
+        $pdf->Ln();
+        $pdf->SetFont('Arial','',10);
+        
+        foreach ($quer as $row){
+            $pdf->Cell(23,6,$row->berat_badan,1,0); 
+            $pdf->Cell(32,6,$row->umur_kehamilan,1,0);
+            $pdf->Cell(30,6,$row->tinggi_fundus,1,0);
+            $pdf->Cell(28,6,$row->keluhan,1,0); 
+            $pdf->Cell(30,6,$row->tekanan_darah,1,0); 
+            $pdf->Cell(28,6,$row->hasil_lab,1,0); 
+            $pdf->Cell(30,6,$row->tindakan,1,0); 
+            $pdf->Cell(50,6,$row->nasehat,1,0); 
+            $pdf->Cell(30,6,$row->tgl_periksa,1,0);
+            $pdf->Cell(30,6,$row->tgl_kembali,1,0);  
+            $pdf->Ln();
+        }
+        $pdf->Output();
+    }
 }
