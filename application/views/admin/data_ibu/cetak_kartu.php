@@ -42,7 +42,7 @@
                     $html.='<tr bgcolor="#ffffff">
                             <td align="center">'.$i.'</td>
                             <td align="center">'.$row['kode_ibu'].'</td>
-                            <td >'.$row['nama_ibu'].'</td>
+                            <td align="center">'.$row['nama_ibu'].'</td>
                             <td align="center">'.$row['nama_suami'].'</td>
           
                             
