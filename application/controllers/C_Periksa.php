@@ -324,6 +324,7 @@ class C_Periksa extends CI_Controller{
         // Memberikan space kebawah agar tidak terlalu rapat
         $pdf->Cell(10,7,'',0,1);
         $pdf->SetFont('Arial','B',10);
+        $pdf->Cell(10,6,'No',1,0);
         $pdf->Cell(23,6,'Berat badan',1,0);
         $pdf->Cell(32,6,'Usia Kehamilan',1,0);
         $pdf->Cell(30,6,'Tinggi Fundus',1,0);
@@ -336,8 +337,9 @@ class C_Periksa extends CI_Controller{
         $pdf->Cell(30,6,'Tanggal Kembali',1,0);
         $pdf->Ln();
         $pdf->SetFont('Arial','',10);
-        
+        $no = 1;
         foreach ($quer as $row){
+        	$pdf->Cell(10,6,$no++,1,0);
             $pdf->Cell(23,6,$row->berat_badan,1,0); 
             $pdf->Cell(32,6,$row->umur_kehamilan,1,0);
             $pdf->Cell(30,6,$row->tinggi_fundus,1,0);

@@ -275,7 +275,7 @@ public function insert(){
         	// $pdf->SetLeftMargin(20);
 	        $pdf->Cell(32,6,'Kode Ibu',0,0);
 	        $pdf->Cell(5,6,':',0,0);
-	        $pdf->Cell(32,6,$row->kode_ibu,0,2); 
+	        $pdf->Cell(32,6,$row->kode_ibu,0,1); 
 	        $pdf->Cell(32,6,'Nama Ibu',0,0);
 	        $pdf->Cell(5,6,':',0,0);
 	        $pdf->Cell(32,6,$row->nama_ibu,0,1); 
@@ -285,6 +285,9 @@ public function insert(){
 	        $pdf->Cell(32,6,'Tanggal Lahir Ibu',0,0);
 	        $pdf->Cell(5,6,':',0,0);
 	        $pdf->Cell(32,6,$row->tgl_lahir_ibu,0,1); 
+	        $pdf->Cell(32,6,'Nama Suami',0,0);
+	        $pdf->Cell(5,6,':',0,0);
+	        $pdf->Cell(32,6,$row->nama_suami,0,1); 
 	        $pdf->Cell(32,6,'Alamat',0,0);
 	        $pdf->Cell(5,6,':',0,0);
 	        $pdf->Cell(32,6,$row->alamat_rumah,0,1); 
