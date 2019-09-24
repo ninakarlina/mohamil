@@ -18,7 +18,7 @@ $dt2 = date("Y-m-d");
 $weeks = week_between_two_dates($dt1, $dt2);
 
 if($weeks <= 12){
-  $tanggal_kembali = date('Y-m-d', strtotime('+1 month'));
+  $tanggal_kembali = date('Y-m-d', strtotime('+30 days'));
 }
 elseif($weeks <= 28){
   $tanggal_kembali = date('Y-m-d', strtotime('+2 week')); 
